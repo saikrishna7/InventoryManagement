@@ -1,0 +1,8 @@
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\bin\tcob-ts-inventory.dll.config
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\bin\tcob-ts-inventory.dll
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\bin\tcob-ts-inventory.pdb
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\bin\System.DirectoryServices.dll
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\obj\Debug\tcob-ts-inventory.dll
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\obj\Debug\tcob-ts-inventory.pdb
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\bin\Microsoft.VisualBasic.dll
+U:\apps-dev.business.missouri.edu\tcob-ts-inventory\obj\Debug\tcob-ts-inventory.csprojResolveAssemblyReference.cache
