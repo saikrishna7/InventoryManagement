@@ -15,11 +15,13 @@
     <AssemblyName>tcob-ts-inventory</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,14 +41,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Json2KeyValue, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Json2KeyValue.1.3.0.0\lib\net40\Json2KeyValue.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.8.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.DirectoryServices">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -67,13 +85,32 @@
     <Content Include="Add.aspx" />
     <Content Include="AddFromLog.aspx" />
     <Content Include="Add_Inventory_Details.aspx" />
+    <Content Include="App_Data\TCOBInventoryDB.mdf" />
+    <Content Include="App_Data\TCOBInventoryDB_log.ldf">
+      <DependentUpon>TCOBInventoryDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="css\sweetalert.css" />
+    <Content Include="default.aspx" />
     <Content Include="Delete.aspx" />
     <Content Include="Edit_Record.aspx" />
     <Content Include="InventoryValidation.aspx" />
+    <Content Include="javascript\sweetalert.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="Summary.aspx" />
+    <Content Include="TCOBInventoryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TCOBInventoryModel.edmx</DependentUpon>
+      <LastGenOutput>TCOBInventoryModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="TCOBInventoryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TCOBInventoryModel.edmx</DependentUpon>
+      <LastGenOutput>TCOBInventoryModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Update.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Add.aspx.cs">
@@ -90,7 +127,62 @@
     <Compile Include="AddFromLog.aspx.designer.cs">
       <DependentUpon>AddFromLog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ComputerInventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory3.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventoryTest.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblCategory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblDepartment.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblLogRecords_TEST.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblMain.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblMake.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblModel.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblOptions.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblOwnedBy.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblParse.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblType.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblUser.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblUserStatus.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ComputerInventory_tblUserStorage.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseStoredProcedure.cs" />
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Delete.aspx.cs">
       <DependentUpon>Delete.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +197,30 @@
     <Compile Include="Edit_Record.aspx.designer.cs">
       <DependentUpon>Edit_Record.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Get_InventoryData_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Recent_Inventory_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Record_InventoryDB_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Record_Temp_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_TestData_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_TestTempData_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Get_Top_Row_Num_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="InventoryValidation.aspx.cs">
       <DependentUpon>InventoryValidation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -112,8 +228,106 @@
     <Compile Include="InventoryValidation.aspx.designer.cs">
       <DependentUpon>InventoryValidation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Inventory_GetInventoryData_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_DeptID_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_Get_Users_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_MakeID_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_MA_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_ModelID_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_Trim_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_ComputerInventory_TypeID_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetCategories_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetInventoryDataFromActual_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetInventoryData_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetMakes_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetModels_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetRecordInventoryDB_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetRecords_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetRecordTemp_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetRecord_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_Inventory_GetTypes_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_TempInventory_GetRecords_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_TempTable_GetRecords_Mismatch_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_TempTable_GetRecords_New_Result.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTempInventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTestInventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTestTemp1Inventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTestTempInventory.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCOBInventoryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TCOBInventoryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCOBInventoryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TCOBInventoryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TCOBInventoryModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="TSWebservices.cs" />
+    <Compile Include="TS_Departments_Serviced.cs">
+      <DependentUpon>TCOBInventoryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Update.aspx.cs">
       <DependentUpon>Update.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -123,12 +337,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="TCOBInventoryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TCOBInventoryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="TCOBInventoryModel.edmx.diagram">
+      <DependentUpon>TCOBInventoryModel.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

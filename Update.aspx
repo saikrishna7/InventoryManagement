@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" %>
 
-<%@ Assembly Src="DatabaseStoredProcedure.cs" %>
-<%@ Assembly Src="TSWebservices.cs" %>
+<%--<%@ Assembly Src="DatabaseStoredProcedure.cs" %>--%>
+<%--<%@ Assembly Src="TSWebservices.cs" %>--%>
 <%@ Import Namespace="System.DirectoryServices" %>
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <%@ Import Namespace="System.Data" %>
@@ -59,6 +59,8 @@
             
             
             protected void Page_Load(object sender, EventArgs e) {
+                inventoryUserPawprint.Attributes.Add("readonly", "readonly");
+                inventoryUser.Attributes.Add("readonly", "readonly");
                 Context.Session.Add("Request URI", "Update.aspx?id="+Request.QueryString["id"]);
                 var logged_in = Context.Session["DomainUser"];
                 if (!(logged_in != null && (bool)logged_in == true)) Response.Redirect("Login.aspx");
@@ -78,6 +80,7 @@
                                 else error();
                             }
                         }
+                        if(key.Contains("inventoryLastUpdateDate"))continue;
                         procedure.SetParameter("@" + key.Replace("inventory",""), formData[key]);
                     }
                     var success = procedure.ExecuteReader();
@@ -117,6 +120,7 @@
                 inventoryNote.Value         = convertToStr(record_data["Note"]);
                 inventoryPurchaseDate.Value = convertToStr(record_data["PurchaseDate"],true);
                 inventoryAuxComputerDate.Value = convertToStr(record_data["AuxComputerDate"],true);
+                inventoryLastUpdateDate.Value = convertToStr(record_data["LastUpdate"],true);
                 
                 frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name");
                 frmTypes.Value = GetJsonArray("sp_Inventory_GetTypes", "Type");
@@ -232,14 +236,17 @@
         });
     </script>
     <style type="text/css">
-        input[name=inventoryUser] {
-            width: 70%;
+        input[name=inventoryUserPawprint] {
+            width: 48%;
         }
 
-        input[name=inventoryUserPawprint] {
-            width: 26%;
+        input[name=inventoryUser] {
+            width: 48%;
             margin-right: 0px;
         }
+
+       
+
         #content #delete {
             margin-bottom: 10px;
         }
@@ -271,8 +278,8 @@
                 <input type="hidden" id="frmUsers" runat="server" />
                 <asp:Label runat="server" ID="lblAddedMessage"></asp:Label>
                 <asp:Label runat="server" ID="lblSerialNum" > Serial Number </asp:Label>
-                <input type="hidden" name ="inventoryInventoryId" id="inventoryInventoryId" runat="server"/>
-                <input runat="server" id="inventorySerialNumber" name="inventorySerialNumber" type="text" class="required">
+                <input runat="server" type="hidden" name ="inventoryInventoryId" id="inventoryInventoryId" />
+                <input runat="server" id="inventorySerialNumber" name="inventorySerialNumber" type="text" class="required" readonly>
 
 
                 <asp:Label runat="server" ID="lblType"> Type </asp:Label>
@@ -283,10 +290,16 @@
                 <input runat="server" id="inventoryModel" name="inventoryModel" type="text"  class="required"/>
                 <asp:Label runat="server" ID="lblCategory">Category </asp:Label>
                 <input runat="server" id="inventoryCategory" name="inventoryCategory" type="text" class="required"/>
-                <asp:Label runat="server" ID="lblUser"> User </asp:Label>
+                <div  style = "float:left; width:50%">
+                    <asp:Label runat="server" ID="lblUserPawprint"> User Pawprint </asp:Label>
+                </div>
+                <div  style = "float:left; width:50%">
+                    <asp:Label runat="server" ID="lblUser"> User Name</asp:Label>
+                </div>
                 <div>
+                <input runat="server" type="text" id="inventoryUserPawprint" tabindex="-1" name="inventoryUserPawprint" readonly />
                 <input runat="server" type="text" id="inventoryUser" name="inventoryUser"  readonly />
-                <input runat="server" type="text" id="inventoryUserPawprint" tabindex="-1" name="inventoryUser" readonly />
+                
                     </div>
                 <asp:Label runat="server" ID="lblDepartments"> Department </asp:Label>
                 <input runat="server" id="inventoryDepartment" name="inventoryDepartment" type="text" class="required"/>
@@ -307,6 +320,8 @@
                 <input runat="server" id="inventoryPurchaseDate" name="inventoryPurchaseDate" class="date required" type="text"  />
                 <asp:Label runat="server" ID="lblAuxComputerDate"> Aux Computer</asp:Label>
                 <input runat="server" id="inventoryAuxComputerDate" name="inventoryAuxComputerDate" class="date required" type="text" />
+                <asp:Label runat="server" ID="lblLastUpdateDate"> Last Update Date</asp:Label>
+                <input runat="server" id="inventoryLastUpdateDate" name="inventoryLastUpdateDate" type="text" class="required" readonly/>
                 <input type="submit" id="Save" value="Update" />
             </div>
         </form>

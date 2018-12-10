@@ -1,0 +1,762 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InventoryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventory">
+    <Key>
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="SerialNumber" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Make" />
+      <PropertyRef Name="Model" />
+    </Key>
+    <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="Department" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="Room" Type="varchar" MaxLength="64" />
+    <Property Name="Letter" Type="varchar" MaxLength="2" />
+    <Property Name="Building" Type="varchar" MaxLength="64" />
+    <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="AuxComputerDate" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+    <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastVerified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblCategory">
+    <Key>
+      <PropertyRef Name="Category_Id" />
+    </Key>
+    <Property Name="Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_Name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblDepartment">
+    <Key>
+      <PropertyRef Name="DeptID" />
+    </Key>
+    <Property Name="DeptID" Type="int" Nullable="false" />
+    <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+    <Property Name="Valid" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblfpd-doctoral-students' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblfpd-doctoral-students">
+          <Property Name="academic-unit" Type="char" MaxLength="10" />
+          <Property Name="flat-panels" Type="int" />
+          <Property Name="purchase-date" Type="datetime" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblLogRecords' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblLogRecords">
+          <Property Name="Trigger" Type="nvarchar" MaxLength="255" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="255" />
+          <Property Name="OS" Type="nvarchar" MaxLength="255" />
+          <Property Name="NetworkAdapter" Type="nvarchar" MaxLength="255" />
+          <Property Name="MACAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblLogRecords_TEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventory_tblLogRecords_TEST">
+    <Key>
+      <PropertyRef Name="Count" />
+    </Key>
+    <Property Name="Count" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Trigger" Type="nvarchar" MaxLength="255" />
+    <Property Name="Timestamp" Type="nvarchar" MaxLength="255" />
+    <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="255" />
+    <Property Name="Model" Type="nvarchar" MaxLength="255" />
+    <Property Name="Memory" Type="nvarchar" MaxLength="255" />
+    <Property Name="OS" Type="nvarchar" MaxLength="255" />
+    <Property Name="NetworkAdapter" Type="nvarchar" MaxLength="255" />
+    <Property Name="MACAddress" Type="nvarchar" MaxLength="255" />
+    <Property Name="IPAddress" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblMain">
+    <Key>
+      <PropertyRef Name="SN" />
+    </Key>
+    <Property Name="CompName" Type="nvarchar" MaxLength="15" />
+    <Property Name="Type" Type="int" />
+    <Property Name="Make" Type="int" />
+    <Property Name="Model" Type="int" />
+    <Property Name="SN" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserStatus" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="20" />
+    <Property Name="Dept" Type="int" />
+    <Property Name="Transferred" Type="ntext" />
+    <Property Name="Purchase" Type="datetime" />
+    <Property Name="AuxComputerDate" Type="datetime" />
+    <Property Name="writeConflict" Type="timestamp" StoreGeneratedPattern="Computed" />
+    <Property Name="OwnedBy" Type="int" />
+    <Property Name="Status" Type="nchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblMake">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Manuf" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblModel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblOptions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventory_tblOptions">
+    <Key>
+      <PropertyRef Name="Version" />
+    </Key>
+    <Property Name="Version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblOwnedBy">
+    <Key>
+      <PropertyRef Name="DeptID" />
+    </Key>
+    <Property Name="DeptID" Type="int" Nullable="false" />
+    <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+    <Property Name="Valid" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblParse">
+    <Key>
+      <PropertyRef Name="ServiceTag" />
+    </Key>
+    <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Timestamp" Type="nvarchar" MaxLength="25" />
+    <Property Name="ComputerName" Type="nvarchar" MaxLength="25" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="25" />
+    <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+    <Property Name="Model" Type="nvarchar" MaxLength="50" />
+    <Property Name="Memory" Type="nvarchar" MaxLength="50" />
+    <Property Name="OS" Type="nvarchar" MaxLength="50" />
+    <Property Name="OSSP" Type="nvarchar" MaxLength="50" />
+    <Property Name="OSVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProcessorDesc" Type="nvarchar" MaxLength="50" />
+    <Property Name="Processor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Level" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClockSpeed" Type="nvarchar" MaxLength="50" />
+    <Property Name="PRocessorID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Network" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblResults' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblResults">
+          <Property Name="compName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PingStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="SN" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="100" />
+          <Property Name="CPU" Type="nvarchar" MaxLength="100" />
+          <Property Name="RAM" Type="nvarchar" MaxLength="50" />
+          <Property Name="Make" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="errorMsg" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+  <EntityType Name="ComputerInventory_tblType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblUpdateRecords' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblUpdateRecords">
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventory_tblUser">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserStatus" Type="int" />
+    <Property Name="Department" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="ComputerInventory_tblUserStatus">
+    <Key>
+      <PropertyRef Name="USID" />
+    </Key>
+    <Property Name="USID" Type="int" Nullable="false" />
+    <Property Name="UserStatus" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventory_tblUserStorage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventory_tblUserStorage">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="FullName" />
+      <PropertyRef Name="Pawprint" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Pawprint" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComputerInventory3">
+    <Key>
+      <PropertyRef Name="InventoryId" />
+    </Key>
+    <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="Department" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="AuxComputerDate" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.ComputerInventoryTest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ComputerInventoryTest">
+    <Key>
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="SerialNumber" />
+      <PropertyRef Name="Type" />
+      <PropertyRef Name="Make" />
+      <PropertyRef Name="Model" />
+    </Key>
+    <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="Department" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="Room" Type="varchar" MaxLength="64" />
+    <Property Name="Letter" Type="varchar" MaxLength="2" />
+    <Property Name="Building" Type="varchar" MaxLength="64" />
+    <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="AuxComputerDate" Type="date" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="Note" Type="text" />
+    <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+    <Property Name="LastVerified" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="InventoryId" />
+    </Key>
+    <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="UserStatus" Type="varchar" MaxLength="255" />
+    <Property Name="Department" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="AuxComputerDate" Type="date" />
+  </EntityType>
+  <EntityType Name="tblTempInventory">
+    <Key>
+      <PropertyRef Name="DifferenceItemId" />
+    </Key>
+    <Property Name="DifferenceItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="varchar" MaxLength="255" />
+    <Property Name="Make" Type="varchar" MaxLength="255" />
+    <Property Name="Model" Type="varchar" MaxLength="255" />
+    <Property Name="ComputerName" Type="varchar" MaxLength="255" />
+    <Property Name="RecordStatus" Type="varchar" MaxLength="255" />
+    <Property Name="Type" Type="nvarchar" MaxLength="255" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="User" Type="nvarchar" MaxLength="255" />
+    <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+    <Property Name="Department" Type="varchar" MaxLength="255" />
+    <Property Name="Location" Type="varchar" MaxLength="255" />
+    <Property Name="Building" Type="varchar" MaxLength="64" />
+    <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+    <Property Name="PurchaseDate" Type="date" />
+    <Property Name="AuxComputerDate" Type="date" />
+    <Property Name="Room" Type="varchar" MaxLength="64" />
+    <Property Name="Letter" Type="varchar" MaxLength="2" />
+    <Property Name="Note" Type="text" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\INVENTORYDB.MDF.dbo.tblTempNewInventory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblTempNewInventory">
+          <Property Name="SerialNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Make" Type="varchar" MaxLength="255" />
+          <Property Name="Model" Type="varchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+          <Property Name="category" Type="varchar" MaxLength="255" />
+          <Property Name="User" Type="varchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="RoomLetter" Type="varchar" MaxLength="2" />
+          <Property Name="Building" Type="varchar" MaxLength="255" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="varchar" MaxLength="255" />
+          <Property Name="AuxComputerDate" Type="varchar" MaxLength="255" />
+          <Property Name="RecordStatus" Type="varchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="tblTestInventory">
+    <Key>
+      <PropertyRef Name="TestId" />
+    </Key>
+    <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+    <Property Name="Type" Type="varchar" MaxLength="255" />
+    <Property Name="LastModified" Type="date" />
+  </EntityType>
+  <EntityType Name="tblTestTemp1Inventory">
+    <Key>
+      <PropertyRef Name="DifferenceItemId" />
+    </Key>
+    <Property Name="DifferenceItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TestId" Type="int" />
+    <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+    <Property Name="Type" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tblTestTempInventory">
+    <Key>
+      <PropertyRef Name="TestId" />
+    </Key>
+    <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+    <Property Name="Type" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Function Name="Add_Inventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="date" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="Add_TempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Add_TestTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TestId" Type="int" Mode="In" />
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Delete_Author" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Author_Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Delete_Inventory_DeleteTempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Delete_Record_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Delete_TempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Delete_TempTestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Delete_TestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Author_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Author_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Author_Name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_DepartmentNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_InventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_InventoryMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_InventoryModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_InventoryOwnedBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_InventoryType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_New_Author_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Recent_Inventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_Record_InventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_Record_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_TestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_TestTempData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Get_Top_Row_Num" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Get_TopRowId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Inventory_GetInventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Add_New_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="studentNum" Type="varchar" Mode="In" />
+    <Parameter Name="lastName" Type="varchar" Mode="In" />
+    <Parameter Name="firstName" Type="varchar" Mode="In" />
+    <Parameter Name="pawPrint" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ComputerInventory_AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Pawprint" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ComputerInventory_Compare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_DeptID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_Get_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_MA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_MakeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_ModelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_NewMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_NewModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_Trim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_ComputerInventory_TypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Get_Departments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_AddNewTempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="Letter" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="Note" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+    <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+    <Parameter Name="DateCreated" Type="varchar" Mode="In" />
+    <Parameter Name="LastUpdate" Type="varchar" Mode="In" />
+    <Parameter Name="LastVerified" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_AddRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+    <Parameter Name="Make" Type="nvarchar" Mode="In" />
+    <Parameter Name="Model" Type="nvarchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="nvarchar" Mode="In" />
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+    <Parameter Name="Category" Type="nvarchar" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="Room" Type="nvarchar" Mode="In" />
+    <Parameter Name="Building" Type="nvarchar" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_AddTempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Room" Type="varchar" Mode="In" />
+    <Parameter Name="Letter" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="Note" Type="text" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_AddUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Pawprint" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_CreateRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+    <Parameter Name="Make" Type="nvarchar" Mode="In" />
+    <Parameter Name="Model" Type="nvarchar" Mode="In" />
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+    <Parameter Name="Category" Type="nvarchar" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="Room" Type="nvarchar" Mode="In" />
+    <Parameter Name="Building" Type="nvarchar" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_DeleteRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="InventoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_DeleteRecordTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_DeleteTempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetDepartmentNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetInventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_GetInventoryDataFromActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_GetInventoryMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetInventoryModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetInventoryOwnedBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetInventoryType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetMakes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_GetRecordInventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_GetRecordTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_GetTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_Inventory_UpdateInventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="Letter" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="Note" Type="text" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_UpdateInventoryDBActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Room" Type="varchar" Mode="In" />
+    <Parameter Name="Letter" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="Note" Type="text" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Inventory_UpdateRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inventoryId" Type="int" Mode="In" />
+    <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="Type" Type="nvarchar" Mode="In" />
+    <Parameter Name="Make" Type="nvarchar" Mode="In" />
+    <Parameter Name="Model" Type="nvarchar" Mode="In" />
+    <Parameter Name="User" Type="nvarchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+    <Parameter Name="Category" Type="nvarchar" Mode="In" />
+    <Parameter Name="Department" Type="nvarchar" Mode="In" />
+    <Parameter Name="Room" Type="nvarchar" Mode="In" />
+    <Parameter Name="Building" Type="nvarchar" Mode="In" />
+    <Parameter Name="Note" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_TempInventory_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_TempTable_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_TempTable_GetRecords_Mismatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_TempTable_GetRecords_New" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Update_InventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+    <Parameter Name="Make" Type="varchar" Mode="In" />
+    <Parameter Name="Model" Type="varchar" Mode="In" />
+    <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+    <Parameter Name="Category" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Location" Type="varchar" Mode="In" />
+    <Parameter Name="Building" Type="varchar" Mode="In" />
+    <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+    <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+    <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Update_Test_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TestId" Type="int" Mode="In" />
+    <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+    <Parameter Name="Type" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="InventoryDBModelStoreContainer">
+    <EntitySet Name="ComputerInventory_tblCategory" EntityType="Self.ComputerInventory_tblCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblDepartment" EntityType="Self.ComputerInventory_tblDepartment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblMain" EntityType="Self.ComputerInventory_tblMain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblMake" EntityType="Self.ComputerInventory_tblMake" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblModel" EntityType="Self.ComputerInventory_tblModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblOwnedBy" EntityType="Self.ComputerInventory_tblOwnedBy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblParse" EntityType="Self.ComputerInventory_tblParse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblType" EntityType="Self.ComputerInventory_tblType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory_tblUserStatus" EntityType="Self.ComputerInventory_tblUserStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory3" EntityType="Self.ComputerInventory3" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTempInventory" EntityType="Self.tblTempInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTestInventory" EntityType="Self.tblTestInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTestTemp1Inventory" EntityType="Self.tblTestTemp1Inventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTestTempInventory" EntityType="Self.tblTestTempInventory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComputerInventory" EntityType="Self.ComputerInventory" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventory].[InventoryId] AS [InventoryId], 
+    [ComputerInventory].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventory].[Type] AS [Type], 
+    [ComputerInventory].[Make] AS [Make], 
+    [ComputerInventory].[Model] AS [Model], 
+    [ComputerInventory].[User] AS [User], 
+    [ComputerInventory].[UserPawprint] AS [UserPawprint], 
+    [ComputerInventory].[Category] AS [Category], 
+    [ComputerInventory].[Department] AS [Department], 
+    [ComputerInventory].[Location] AS [Location], 
+    [ComputerInventory].[Room] AS [Room], 
+    [ComputerInventory].[Letter] AS [Letter], 
+    [ComputerInventory].[Building] AS [Building], 
+    [ComputerInventory].[OwnedBy] AS [OwnedBy], 
+    [ComputerInventory].[PurchaseDate] AS [PurchaseDate], 
+    [ComputerInventory].[AuxComputerDate] AS [AuxComputerDate], 
+    [ComputerInventory].[DateCreated] AS [DateCreated], 
+    [ComputerInventory].[LastUpdate] AS [LastUpdate], 
+    [ComputerInventory].[Note] AS [Note], 
+    [ComputerInventory].[ComputerName] AS [ComputerName], 
+    [ComputerInventory].[LastVerified] AS [LastVerified]
+    FROM [dbo].[ComputerInventory] AS [ComputerInventory]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ComputerInventory_tblLogRecords_TEST" EntityType="Self.ComputerInventory_tblLogRecords_TEST" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventory_tblLogRecords_TEST].[Count] AS [Count], 
+    [ComputerInventory_tblLogRecords_TEST].[Trigger] AS [Trigger], 
+    [ComputerInventory_tblLogRecords_TEST].[Timestamp] AS [Timestamp], 
+    [ComputerInventory_tblLogRecords_TEST].[ComputerName] AS [ComputerName], 
+    [ComputerInventory_tblLogRecords_TEST].[UserName] AS [UserName], 
+    [ComputerInventory_tblLogRecords_TEST].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventory_tblLogRecords_TEST].[Manufacturer] AS [Manufacturer], 
+    [ComputerInventory_tblLogRecords_TEST].[Model] AS [Model], 
+    [ComputerInventory_tblLogRecords_TEST].[Memory] AS [Memory], 
+    [ComputerInventory_tblLogRecords_TEST].[OS] AS [OS], 
+    [ComputerInventory_tblLogRecords_TEST].[NetworkAdapter] AS [NetworkAdapter], 
+    [ComputerInventory_tblLogRecords_TEST].[MACAddress] AS [MACAddress], 
+    [ComputerInventory_tblLogRecords_TEST].[IPAddress] AS [IPAddress]
+    FROM [dbo].[ComputerInventory_tblLogRecords_TEST] AS [ComputerInventory_tblLogRecords_TEST]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ComputerInventory_tblOptions" EntityType="Self.ComputerInventory_tblOptions" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventory_tblOptions].[Version] AS [Version]
+    FROM [dbo].[ComputerInventory_tblOptions] AS [ComputerInventory_tblOptions]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ComputerInventory_tblUser" EntityType="Self.ComputerInventory_tblUser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventory_tblUser].[ID] AS [ID], 
+    [ComputerInventory_tblUser].[UserName] AS [UserName], 
+    [ComputerInventory_tblUser].[UserStatus] AS [UserStatus], 
+    [ComputerInventory_tblUser].[Department] AS [Department], 
+    [ComputerInventory_tblUser].[Location] AS [Location]
+    FROM [dbo].[ComputerInventory_tblUser] AS [ComputerInventory_tblUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ComputerInventory_tblUserStorage" EntityType="Self.ComputerInventory_tblUserStorage" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventory_tblUserStorage].[id] AS [id], 
+    [ComputerInventory_tblUserStorage].[FullName] AS [FullName], 
+    [ComputerInventory_tblUserStorage].[Pawprint] AS [Pawprint]
+    FROM [dbo].[ComputerInventory_tblUserStorage] AS [ComputerInventory_tblUserStorage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ComputerInventoryTest" EntityType="Self.ComputerInventoryTest" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ComputerInventoryTest].[InventoryId] AS [InventoryId], 
+    [ComputerInventoryTest].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventoryTest].[Type] AS [Type], 
+    [ComputerInventoryTest].[Make] AS [Make], 
+    [ComputerInventoryTest].[Model] AS [Model], 
+    [ComputerInventoryTest].[User] AS [User], 
+    [ComputerInventoryTest].[UserPawprint] AS [UserPawprint], 
+    [ComputerInventoryTest].[Category] AS [Category], 
+    [ComputerInventoryTest].[Department] AS [Department], 
+    [ComputerInventoryTest].[Location] AS [Location], 
+    [ComputerInventoryTest].[Room] AS [Room], 
+    [ComputerInventoryTest].[Letter] AS [Letter], 
+    [ComputerInventoryTest].[Building] AS [Building], 
+    [ComputerInventoryTest].[OwnedBy] AS [OwnedBy], 
+    [ComputerInventoryTest].[PurchaseDate] AS [PurchaseDate], 
+    [ComputerInventoryTest].[AuxComputerDate] AS [AuxComputerDate], 
+    [ComputerInventoryTest].[DateCreated] AS [DateCreated], 
+    [ComputerInventoryTest].[LastUpdate] AS [LastUpdate], 
+    [ComputerInventoryTest].[Note] AS [Note], 
+    [ComputerInventoryTest].[ComputerName] AS [ComputerName], 
+    [ComputerInventoryTest].[LastVerified] AS [LastVerified]
+    FROM [dbo].[ComputerInventoryTest] AS [ComputerInventoryTest]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

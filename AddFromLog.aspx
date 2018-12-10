@@ -1,7 +1,7 @@
 <%@ Page Language="C#" %>
 
-<%@ Assembly Src="DatabaseStoredProcedure.cs" %>
-<%@ Assembly Src="TSWebservices.cs" %>
+<%--<%@ Assembly Src="DatabaseStoredProcedure.cs" %>--%>
+<%--<%@ Assembly Src="TSWebservices.cs" %>--%>
 <%@ Import Namespace="System.DirectoryServices" %>
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <%@ Import Namespace="System.Data" %>
@@ -27,405 +27,422 @@
 
     <script runat="server">
 
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
 
 
-            //String GetJsonArray(String Command, String Field) {
-            //    DataTable data = new Inventory_DB.DatabaseStoredProcedure(Command).ExecuteReader();
-            //    String[] arrayToLoad = new String[data.Rows.Count];
-            //    for (int i = 0; i < data.Rows.Count; i++) {
-            //        arrayToLoad[i] = data.Rows[i][Field].ToString();
+        //String GetJsonArray(String Command, String Field) {
+        //    DataTable data = new Inventory_DB.DatabaseStoredProcedure(Command).ExecuteReader();
+        //    String[] arrayToLoad = new String[data.Rows.Count];
+        //    for (int i = 0; i < data.Rows.Count; i++) {
+        //        arrayToLoad[i] = data.Rows[i][Field].ToString();
+        //    }
+        //    return serializer.Serialize(arrayToLoad);
+        //}
+
+        bool assert(string value)
+        {
+            if (value != null && value != "") return true;
+            return false;
+        }
+
+        void error() {
+            Response.Redirect("Error.aspx",true);
+        }
+
+        public string[] myarrayDepartment;
+        public string myarray_jsonDepartment;
+        public string[] myarrayCategory;
+        public string myarray_jsonCategory;
+        public string[] myarrayType;
+        public string myarray_jsonType;
+        public string[] myarrayOwnedBy;
+        public string myarray_jsonOwnedBy;
+        public string[] myarrayMake;
+        public string myarray_jsonMake;
+        public string[] myarrayModel;
+        public string myarray_jsonModel;
+
+        public string users_json;
+        public string[] users={};
+
+        private static string Connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["TCOBInventoryDBEntities"].ConnectionString;
+
+        string GetAllFacStaffPhdUsers()
+        {
+            var url = "https://apps.business.missouri.edu/services/ldap/get_fac_staff_phd_users.php?API_KEY=V2hkLZ00Lju6483lfHX1hcypC587tX7B";
+            WebRequest get_req = WebRequest.Create(url);
+            get_req.ContentType = "application/json; charset=utf-8";
+            Stream res_stream;
+            res_stream = get_req.GetResponse().GetResponseStream();
+            StreamReader res = new StreamReader(res_stream);
+
+
+            string cur_line = "";
+            string body = "";
+            int i = 0;
+            while (cur_line != null)
+            {
+                i++;
+                cur_line = res.ReadLine();
+                body += cur_line;
+            }
+            return body;
+        }
+
+
+        protected void Page_Load(object sender, EventArgs e) {
+            Context.Session.Add("Request URI", "Add.aspx");
+            var logged_in = Context.Session["DomainUser"];
+            if (!(logged_in != null && (bool)logged_in == true)) Response.Redirect("Login.aspx");
+
+            //if (Request.RequestType == "POST") {
+            //    var formData = Request.Form;
+            //    var procedure = new inventory.DatabaseStoredProcedure("[dbo].[sp_Inventory_CreateRecord]");
+            //    foreach (var key in formData.AllKeys) {
+            //        if (!key.Contains("inventory") ) continue;
+            //        if (!assert(formData[key]) && key != "inventoryRoomLetter" && key != "inventoryNote" && key != "inventoryAuxComputerDate")
+            //        {
+            //            String[] PeopleCategories = { " ", "Faculty", "Staff", "Departments", "GA/RA/TA", "PhD", "Other" };
+            //            var query = from String str in PeopleCategories.AsQueryable() where str == formData["inventoryCategory"] select str;
+            //            if (query.Count() > 0){
+            //                error();
+            //            }
+            //            else {
+            //                if (key == "inventoryUser" || key == "inventoryUserPawprint") continue;
+            //                else error();
+            //            }
+            //        }
+            //        procedure.SetParameter("@" + key.Replace("inventory",""), formData[key]);
             //    }
-            //    return serializer.Serialize(arrayToLoad);
+            //    var success = procedure.ExecuteReader();
+            //    Response.Redirect("summary.aspx");
+
             //}
 
-            bool assert(string value)
+            // get values from the temp table to fill the known fields
+
+            //String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
+
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connectionstring);
+
+            conn.Open();
+
+            //Comment: use the serial number from the previous page where you display data from temp table
+
+            string serialnum = Request.QueryString["id"];
+
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[sp_Inventory_GetRecordTemp]";
+            cmd.Parameters.AddWithValue("@SerialNum", serialnum);
+
+            System.Data.SqlClient.SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows == true)
             {
-                if (value != null && value != "") return true;
-                return false;
+
+                System.Data.DataTable dt = new System.Data.DataTable();
+                dt.Load(reader);
+
+                string serialNumberTemp = dt.Rows[0]["SerialNumber"].ToString();
+                string makeTemp = dt.Rows[0]["Make"].ToString();
+                string modelTemp = dt.Rows[0]["Model"].ToString();
+                string computerNameTemp = dt.Rows[0]["ComputerName"].ToString();
+                string typeTemp = dt.Rows[0]["Type"].ToString();
+                string categoryTemp = dt.Rows[0]["Category"].ToString();
+                string userTemp = dt.Rows[0]["User"].ToString();
+                string userPawprintTemp = dt.Rows[0]["UserPawprint"].ToString();
+                string departmentTemp = dt.Rows[0]["Department"].ToString();
+                string locationTemp = dt.Rows[0]["Location"].ToString();
+                string roomLetterTemp = dt.Rows[0]["RoomLetter"].ToString();
+                string buildingTemp = dt.Rows[0]["Building"].ToString();
+                string noteTemp = dt.Rows[0]["Note"].ToString();
+                string ownedByTemp = dt.Rows[0]["OwnedBy"].ToString();
+                string purchaseDateTemp = dt.Rows[0]["PurchaseDate"].ToString();
+                string auxComputerDateTemp = dt.Rows[0]["AuxComputerDate"].ToString();
+
+                inventorySerialNumber.Value = serialNumberTemp;
+                inventoryMake.Value = makeTemp;
+                inventoryModel.Value = modelTemp;
+                inventoryComputerName.Value = computerNameTemp;
+                inventoryType.Value = typeTemp;
+                inventoryCategory.Value = categoryTemp;
+                inventoryUser.Value = userTemp;
+                inventoryUserPawprint.Value = userPawprintTemp;
+                inventoryDepartment.Value = departmentTemp;
+                inventoryRoom.Value = locationTemp;
+                inventoryRoomLetter.Value = roomLetterTemp;
+                inventoryBuilding.Value = buildingTemp;
+                inventoryNote.Value = noteTemp;
+                inventoryOwnedBy.Value = ownedByTemp;
+                inventoryPurchaseDate.Value = purchaseDateTemp;
+                inventoryAuxComputerDate.Value = auxComputerDateTemp;
+
+
+
             }
 
-            void error() {
-                Response.Redirect("Error.aspx",true);
-            }
+            //auto complete department
+            reader.Close();
 
-            public string[] myarrayDepartment;
-            public string myarray_jsonDepartment;
-            public string[] myarrayCategory;
-            public string myarray_jsonCategory;
-            public string[] myarrayType;
-            public string myarray_jsonType;
-            public string[] myarrayOwnedBy;
-            public string myarray_jsonOwnedBy;
-            public string[] myarrayMake;
-            public string myarray_jsonMake;
-            public string[] myarrayModel;
-            public string myarray_jsonModel;
-            
+            System.Data.SqlClient.SqlCommand cmd4 = new System.Data.SqlClient.SqlCommand();
+            cmd4.Connection = conn;
+            cmd4.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd4.CommandText = "sp_Inventory_GetDepartmentNames";
 
-		    string GetAllFacStaffPhdUsers() {
-				   var url = "https://apps.business.missouri.edu/services/ldap/get_fac_staff_phd_users.php?API_KEY=V2hkLZ00Lju6483lfHX1hcypC587tX7B";
-            	WebRequest get_req = WebRequest.Create(url);
-            	Stream res_stream;
-            	res_stream = get_req.GetResponse().GetResponseStream();
-            	StreamReader res = new StreamReader(res_stream);
+            System.Data.SqlClient.SqlDataReader reader4 = cmd4.ExecuteReader();
 
-            	string cur_line = "";
-            	string body = "";
-            	int i = 0;
-            	while (cur_line != null)
-            	{
-                	i++;
-                	cur_line = res.ReadLine();
-                	body += cur_line;
-            	}
-            	return body;
-            }
-
-
-            protected void Page_Load(object sender, EventArgs e) {
-                Context.Session.Add("Request URI", "Add.aspx");
-                var logged_in = Context.Session["DomainUser"];
-                if (!(logged_in != null && (bool)logged_in == true)) Response.Redirect("Login.aspx");
-                
-                //if (Request.RequestType == "POST") {
-                //    var formData = Request.Form;
-                //    var procedure = new inventory.DatabaseStoredProcedure("[dbo].[sp_Inventory_CreateRecord]");
-                //    foreach (var key in formData.AllKeys) {
-                //        if (!key.Contains("inventory") ) continue;
-                //        if (!assert(formData[key]) && key != "inventoryRoomLetter" && key != "inventoryNote" && key != "inventoryAuxComputerDate")
-                //        {
-                //            String[] PeopleCategories = { " ", "Faculty", "Staff", "Departments", "GA/RA/TA", "PhD", "Other" };
-                //            var query = from String str in PeopleCategories.AsQueryable() where str == formData["inventoryCategory"] select str;
-                //            if (query.Count() > 0){
-                //                error();
-                //            }
-                //            else {
-                //                if (key == "inventoryUser" || key == "inventoryUserPawprint") continue;
-                //                else error();
-                //            }
-                //        }
-                //        procedure.SetParameter("@" + key.Replace("inventory",""), formData[key]);
-                //    }
-                //    var success = procedure.ExecuteReader();
-                //    Response.Redirect("summary.aspx");
-                    
-                //}
-                
-                // get values from the temp table to fill the known fields
-                
-                String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
-                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
-
-                conn.Open();
-        
-                //Comment: use the serial number from the previous page where you display data from temp table
-        
-                string serialnum = Request.QueryString["id"];
-        
-                System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-                cmd.Connection = conn;
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd.CommandText = "[dbo].[sp_Inventory_GetRecordTemp]";
-                cmd.Parameters.AddWithValue("@SerialNum", serialnum);
-
-                System.Data.SqlClient.SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows == true)
-                {
-
-                    System.Data.DataTable dt = new System.Data.DataTable();
-                    dt.Load(reader);
-
-                    string serialNumberTemp = dt.Rows[0]["SerialNumber"].ToString();
-                    string makeTemp = dt.Rows[0]["Make"].ToString();
-                    string modelTemp = dt.Rows[0]["Model"].ToString();
-                    string computerNameTemp = dt.Rows[0]["ComputerName"].ToString();
-                    string typeTemp = dt.Rows[0]["Type"].ToString();
-                    string categoryTemp = dt.Rows[0]["Category"].ToString();
-                    string userTemp = dt.Rows[0]["User"].ToString();
-                    string userPawprintTemp = dt.Rows[0]["UserPawprint"].ToString();
-                    string departmentTemp = dt.Rows[0]["Department"].ToString();
-                    string roomTemp = dt.Rows[0]["Room"].ToString();
-                    string letterTemp = dt.Rows[0]["Letter"].ToString();
-                    string buildingTemp = dt.Rows[0]["Building"].ToString();
-                    string noteTemp = dt.Rows[0]["Note"].ToString();
-                    string ownedByTemp = dt.Rows[0]["OwnedBy"].ToString();
-                    string purchaseDateTemp = dt.Rows[0]["PurchaseDate"].ToString();
-                    string auxComputerDateTemp = dt.Rows[0]["AuxComputerDate"].ToString();
-
-                    inventorySerialNumber.Value = serialNumberTemp;
-                    inventoryMake.Value = makeTemp;
-                    inventoryModel.Value = modelTemp;
-                    inventoryComputerName.Value = computerNameTemp;
-                    inventoryType.Value = typeTemp;
-                    inventoryCategory.Value = categoryTemp;
-                    inventoryUser.Value = userTemp;
-                    inventoryUserPawprint.Value = userPawprintTemp;
-                    inventoryDepartment.Value = departmentTemp;
-                    inventoryRoom.Value = roomTemp;
-                    inventoryRoomLetter.Value = letterTemp;
-                    inventoryBuilding.Value = buildingTemp;
-                    inventoryNote.Value = noteTemp;
-                    inventoryOwnedBy.Value = ownedByTemp;
-                    inventoryPurchaseDate.Value = purchaseDateTemp;
-                    inventoryAuxComputerDate.Value = auxComputerDateTemp;
-
-
-
-                }
-
-                //auto complete department
-
-          
-                System.Data.SqlClient.SqlCommand cmd4 = new System.Data.SqlClient.SqlCommand();
-                cmd4.Connection = conn;
-                cmd4.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd4.CommandText = "sp_Inventory_GetDepartmentNames";
-
-                System.Data.SqlClient.SqlDataReader reader4 = cmd4.ExecuteReader();
-
-                if (reader4.HasRows == true)
-                {
-                    System.Data.DataTable dt4 = new System.Data.DataTable();
-                    dt4.Load(reader4);
-                    myarrayDepartment = new String[dt4.Rows.Count];
-                    for (int i = 0; i < dt4.Rows.Count; i++)
-                    {
-                        myarrayDepartment[i] = dt4.Rows[i]["Dept"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonDepartment = serializer.Serialize(myarrayDepartment);
-
-
-                reader4.Close();
-
-                //auto complete category
-
-                System.Data.SqlClient.SqlCommand cmd5 = new System.Data.SqlClient.SqlCommand();
-                cmd5.Connection = conn;
-                cmd5.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd5.CommandText = "[dbo].[sp_Inventory_GetCategory]";
-
-                System.Data.SqlClient.SqlDataReader reader5 = cmd5.ExecuteReader();
-
-                if (reader5.HasRows == true)
-                {
-                    System.Data.DataTable dt5 = new System.Data.DataTable();
-                    dt5.Load(reader5);
-                    myarrayCategory = new String[dt5.Rows.Count];
-                    for (int j = 0; j < dt5.Rows.Count; j++)
-                    {
-                        myarrayCategory[j] = dt5.Rows[j]["Category_Name"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonCategory = serializer.Serialize(myarrayCategory);
-
-
-                reader5.Close();
-
-
-                //autocomplete for type
-
-
-                System.Data.SqlClient.SqlCommand cmd6 = new System.Data.SqlClient.SqlCommand();
-                cmd6.Connection = conn;
-                cmd6.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd6.CommandText = "[dbo].[sp_Inventory_GetInventoryType]";
-
-                System.Data.SqlClient.SqlDataReader reader6 = cmd6.ExecuteReader();
-
-                if (reader6.HasRows == true)
-                {
-                    System.Data.DataTable dt6 = new System.Data.DataTable();
-                    dt6.Load(reader6);
-                    myarrayType = new String[dt6.Rows.Count];
-                    for (int j = 0; j < dt6.Rows.Count; j++)
-                    {
-                        myarrayType[j] = dt6.Rows[j]["Type"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonType = serializer.Serialize(myarrayType);
-
-
-                reader6.Close();
-
-                //autpcomplete for ownedby
-
-                System.Data.SqlClient.SqlCommand cmd7 = new System.Data.SqlClient.SqlCommand();
-                cmd7.Connection = conn;
-                cmd7.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd7.CommandText = "[dbo].[sp_Inventory_GetInventoryOwnedBy]";
-
-                System.Data.SqlClient.SqlDataReader reader7 = cmd7.ExecuteReader();
-
-                if (reader7.HasRows == true)
-                {
-                    System.Data.DataTable dt7 = new System.Data.DataTable();
-                    dt7.Load(reader7);
-                    myarrayOwnedBy = new String[dt7.Rows.Count];
-                    for (int j = 0; j < dt7.Rows.Count; j++)
-                    {
-                        myarrayOwnedBy[j] = dt7.Rows[j]["Dept"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonOwnedBy = serializer.Serialize(myarrayOwnedBy);
-
-
-                reader7.Close();
-
-
-                //autpcomplete for make
-
-                System.Data.SqlClient.SqlCommand cmd8 = new System.Data.SqlClient.SqlCommand();
-                cmd8.Connection = conn;
-                cmd8.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd8.CommandText = "[dbo].[sp_Inventory_GetInventoryMake]";
-
-                System.Data.SqlClient.SqlDataReader reader8 = cmd8.ExecuteReader();
-
-                if (reader8.HasRows == true)
-                {
-                    System.Data.DataTable dt8 = new System.Data.DataTable();
-                    dt8.Load(reader8);
-                    myarrayMake = new String[dt8.Rows.Count];
-                    for (int j = 0; j < dt8.Rows.Count; j++)
-                    {
-                        myarrayMake[j] = dt8.Rows[j]["Manuf"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonMake = serializer.Serialize(myarrayMake);
-
-
-                reader8.Close();
-
-                //autpcomplete for model
-
-                System.Data.SqlClient.SqlCommand cmd9 = new System.Data.SqlClient.SqlCommand();
-                cmd9.Connection = conn;
-                cmd9.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd9.CommandText = "[dbo].[sp_Inventory_GetInventoryModel]";
-
-                System.Data.SqlClient.SqlDataReader reader9 = cmd9.ExecuteReader();
-
-                if (reader9.HasRows == true)
-                {
-                    System.Data.DataTable dt9 = new System.Data.DataTable();
-                    dt9.Load(reader9);
-                    myarrayModel = new String[dt9.Rows.Count];
-                    for (int j = 0; j < dt9.Rows.Count; j++)
-                    {
-                        myarrayModel[j] = dt9.Rows[j]["Model"].ToString();
-                        //myarray[i] = reader["Dept"].ToString();
-                    }
-
-
-                }
-
-
-                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-                myarray_jsonModel = serializer.Serialize(myarrayModel);
-
-
-                reader9.Close();
-                
-                //frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name");
-                //frmTypes.Value = GetJsonArray("sp_Inventory_GetTypes", "Type");
-                //frmMakes.Value = GetJsonArray("sp_Inventory_GetMakes", "Manuf");
-                //frmModels.Value = GetJsonArray("sp_Inventory_GetModels", "Model");
-                //frmCategories.Value = GetJsonArray("sp_Inventory_GetCategories", "Category_Name");
-                //frmUsers.Value = GetAllFacStaffPhdUsers(); //TechServices.TSWebservices.GetAllFacStaffPhdUsers();
-            }
-
-            protected void btnAddItemFromLog_Click(object sender, EventArgs e)
+            if (reader4.HasRows == true)
             {
-                string serialNumberAdd = Request.Form["inventorySerialNumber"];
-                string makeAdd = Request.Form["inventoryMake"];
-                string modelAdd = Request.Form["inventoryModel"];
-                string computerNameAdd = Request.Form["inventoryComputerName"];
-                string typeAdd = Request.Form["inventoryType"];
-                string userAdd = Request.Form["inventoryUser"];
-                string userPawprintAdd = Request.Form["inventoryUserPawprint"];
-                string categoryAdd = Request.Form["inventoryCategory"];
-                string departmentAdd = Request.Form["inventoryDepartment"];
-                string buildingAdd = Request.Form["inventoryBuilding"];
-                string buildingNoteAdd = Request.Form["inventoryNote"];
-                string locationRoomAdd = Request.Form["inventoryRoom"];
-                string letterAdd = Request.Form["inventoryRoomLetter"];
-                string ownedbyAdd = Request.Form["inventoryOwnedBy"];
-                string purchaseDateAdd = Request.Form["inventoryPurchaseDate"];
-                string auxComputerAdd = Request.Form["inventoryAuxComputerDate"];
+                System.Data.DataTable dt4 = new System.Data.DataTable();
+                dt4.Load(reader4);
+                myarrayDepartment = new String[dt4.Rows.Count];
+                for (int i = 0; i < dt4.Rows.Count; i++)
+                {
+                    myarrayDepartment[i] = dt4.Rows[i]["Dept"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
 
-                String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
-                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
-
-                conn.Open();
-                System.Data.SqlClient.SqlCommand cmd1 = new System.Data.SqlClient.SqlCommand();
-                cmd1.Connection = conn;
-                cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-
-                cmd1.CommandText = "[dbo].[sp_Inventory_AddRecord]";
-                cmd1.Parameters.AddWithValue("@SerialNumber", serialNumberAdd);
-                cmd1.Parameters.AddWithValue("@Make", makeAdd);
-                cmd1.Parameters.AddWithValue("@Model", modelAdd);
-                cmd1.Parameters.AddWithValue("@ComputerName", computerNameAdd);
-                cmd1.Parameters.AddWithValue("@Type", typeAdd);
-                cmd1.Parameters.AddWithValue("@User", userAdd);
-                cmd1.Parameters.AddWithValue("@UserPawprint", userPawprintAdd);
-                cmd1.Parameters.AddWithValue("@Category", categoryAdd);
-                cmd1.Parameters.AddWithValue("@Department", departmentAdd);
-                cmd1.Parameters.AddWithValue("@Building", buildingAdd);
-                cmd1.Parameters.AddWithValue("@Note", buildingNoteAdd);
-                cmd1.Parameters.AddWithValue("@OwnedBy", ownedbyAdd);
-                cmd1.Parameters.AddWithValue("@Room", locationRoomAdd);
-                cmd1.Parameters.AddWithValue("@RoomLetter", letterAdd);
-                cmd1.Parameters.AddWithValue("@PurchaseDate", purchaseDateAdd);
-                cmd1.Parameters.AddWithValue("@AuxComputerDate", auxComputerAdd);
-                cmd1.ExecuteScalar();
-
-
-
-
-                System.Data.SqlClient.SqlCommand cmd2 = new System.Data.SqlClient.SqlCommand();
-                cmd2.Connection = conn;
-                cmd2.CommandType = System.Data.CommandType.StoredProcedure;
-                cmd2.CommandText = "[dbo].[sp_Inventory_DeleteRecordTemp]";
-                cmd2.Parameters.AddWithValue("@SerialNumber", serialNumberAdd);
-
-                cmd2.ExecuteScalar();
-
-                Response.Redirect("InventoryValidation.aspx");
 
             }
+
+
+            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonDepartment = serializer.Serialize(myarrayDepartment);
+
+
+            reader4.Close();
+
+            //auto complete category
+
+            System.Data.SqlClient.SqlCommand cmd5 = new System.Data.SqlClient.SqlCommand();
+            cmd5.Connection = conn;
+            cmd5.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd5.CommandText = "[dbo].[sp_Inventory_GetCategory]";
+
+            System.Data.SqlClient.SqlDataReader reader5 = cmd5.ExecuteReader();
+
+            if (reader5.HasRows == true)
+            {
+                System.Data.DataTable dt5 = new System.Data.DataTable();
+                dt5.Load(reader5);
+                myarrayCategory = new String[dt5.Rows.Count];
+                for (int j = 0; j < dt5.Rows.Count; j++)
+                {
+                    myarrayCategory[j] = dt5.Rows[j]["Category_Name"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
+
+
+            }
+
+
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonCategory = serializer.Serialize(myarrayCategory);
+
+
+            reader5.Close();
+
+
+            //autocomplete for type
+
+
+            System.Data.SqlClient.SqlCommand cmd6 = new System.Data.SqlClient.SqlCommand();
+            cmd6.Connection = conn;
+            cmd6.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd6.CommandText = "[dbo].[sp_Inventory_GetInventoryType]";
+
+            System.Data.SqlClient.SqlDataReader reader6 = cmd6.ExecuteReader();
+
+            if (reader6.HasRows == true)
+            {
+                System.Data.DataTable dt6 = new System.Data.DataTable();
+                dt6.Load(reader6);
+                myarrayType = new String[dt6.Rows.Count];
+                for (int j = 0; j < dt6.Rows.Count; j++)
+                {
+                    myarrayType[j] = dt6.Rows[j]["Type"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
+
+
+            }
+
+
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonType = serializer.Serialize(myarrayType);
+
+
+            reader6.Close();
+
+            //autpcomplete for ownedby
+
+            System.Data.SqlClient.SqlCommand cmd7 = new System.Data.SqlClient.SqlCommand();
+            cmd7.Connection = conn;
+            cmd7.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd7.CommandText = "[dbo].[sp_Inventory_GetInventoryOwnedBy]";
+
+            System.Data.SqlClient.SqlDataReader reader7 = cmd7.ExecuteReader();
+
+            if (reader7.HasRows == true)
+            {
+                System.Data.DataTable dt7 = new System.Data.DataTable();
+                dt7.Load(reader7);
+                myarrayOwnedBy = new String[dt7.Rows.Count];
+                for (int j = 0; j < dt7.Rows.Count; j++)
+                {
+                    myarrayOwnedBy[j] = dt7.Rows[j]["Dept"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
+
+
+            }
+
+
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonOwnedBy = serializer.Serialize(myarrayOwnedBy);
+
+
+            reader7.Close();
+
+
+            //autpcomplete for make
+
+            System.Data.SqlClient.SqlCommand cmd8 = new System.Data.SqlClient.SqlCommand();
+            cmd8.Connection = conn;
+            cmd8.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd8.CommandText = "[dbo].[sp_Inventory_GetInventoryMake]";
+
+            System.Data.SqlClient.SqlDataReader reader8 = cmd8.ExecuteReader();
+
+            if (reader8.HasRows == true)
+            {
+                System.Data.DataTable dt8 = new System.Data.DataTable();
+                dt8.Load(reader8);
+                myarrayMake = new String[dt8.Rows.Count];
+                for (int j = 0; j < dt8.Rows.Count; j++)
+                {
+                    myarrayMake[j] = dt8.Rows[j]["Manuf"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
+
+
+            }
+
+
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonMake = serializer.Serialize(myarrayMake);
+
+
+            reader8.Close();
+
+            //autpcomplete for model
+
+            System.Data.SqlClient.SqlCommand cmd9 = new System.Data.SqlClient.SqlCommand();
+            cmd9.Connection = conn;
+            cmd9.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd9.CommandText = "[dbo].[sp_Inventory_GetInventoryModel]";
+
+            System.Data.SqlClient.SqlDataReader reader9 = cmd9.ExecuteReader();
+
+            if (reader9.HasRows == true)
+            {
+                System.Data.DataTable dt9 = new System.Data.DataTable();
+                dt9.Load(reader9);
+                myarrayModel = new String[dt9.Rows.Count];
+                for (int j = 0; j < dt9.Rows.Count; j++)
+                {
+                    myarrayModel[j] = dt9.Rows[j]["Model"].ToString();
+                    //myarray[i] = reader["Dept"].ToString();
+                }
+
+
+            }
+
+
+            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            myarray_jsonModel = serializer.Serialize(myarrayModel);
+
+
+            reader9.Close();
+
+            //frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name");
+            //frmTypes.Value = GetJsonArray("sp_Inventory_GetTypes", "Type");
+            //frmMakes.Value = GetJsonArray("sp_Inventory_GetMakes", "Manuf");
+            //frmModels.Value = GetJsonArray("sp_Inventory_GetModels", "Model");
+            //frmCategories.Value = GetJsonArray("sp_Inventory_GetCategories", "Category_Name");
+
+
+
+            users_json = TechServices.TSWebservices.GetAllFacStaffPhdUsers(); //uncommented
+                                                                              //Object users_obj = users_json;
+                                                                              //serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                                                                              //users_obj = serializer.Serialize(users_obj);
+                                                                              //Dictionary<string, string> dict = (Dictionary<string, string>)serializer.DeserializeObject(users_obj);
+        }
+
+        protected void btnAddItemFromLog_Click(object sender, EventArgs e)
+        {
+            string serialNumberAdd = Request.Form["inventorySerialNumber"];
+            string makeAdd = Request.Form["inventoryMake"];
+            string modelAdd = Request.Form["inventoryModel"];
+            string computerNameAdd = Request.Form["inventoryComputerName"];
+            string typeAdd = Request.Form["inventoryType"];
+            string userAdd = Request.Form["inventoryUser"];
+            string userPawprintAdd = Request.Form["inventoryUserPawprint"];
+            string categoryAdd = Request.Form["inventoryCategory"];
+            string departmentAdd = Request.Form["inventoryDepartment"];
+            string buildingAdd = Request.Form["inventoryBuilding"];
+            string buildingNoteAdd = Request.Form["inventoryNote"];
+            string locationRoomAdd = Request.Form["inventoryRoom"];
+            string letterAdd = Request.Form["inventoryRoomLetter"];
+            string ownedbyAdd = Request.Form["inventoryOwnedBy"];
+            string purchaseDateAdd = Request.Form["inventoryPurchaseDate"];
+            string auxComputerAdd = Request.Form["inventoryAuxComputerDate"];
+
+            String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
+
+            conn.Open();
+            System.Data.SqlClient.SqlCommand cmd1 = new System.Data.SqlClient.SqlCommand();
+            cmd1.Connection = conn;
+            cmd1.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd1.CommandText = "[dbo].[sp_Inventory_AddRecord]";
+            cmd1.Parameters.AddWithValue("@SerialNumber", serialNumberAdd);
+            cmd1.Parameters.AddWithValue("@Make", makeAdd);
+            cmd1.Parameters.AddWithValue("@Model", modelAdd);
+            cmd1.Parameters.AddWithValue("@ComputerName", computerNameAdd);
+            cmd1.Parameters.AddWithValue("@Type", typeAdd);
+            cmd1.Parameters.AddWithValue("@User", userAdd);
+            cmd1.Parameters.AddWithValue("@UserPawprint", userPawprintAdd);
+            cmd1.Parameters.AddWithValue("@Category", categoryAdd);
+            cmd1.Parameters.AddWithValue("@Department", departmentAdd);
+            cmd1.Parameters.AddWithValue("@Building", buildingAdd);
+            cmd1.Parameters.AddWithValue("@Note", buildingNoteAdd);
+            cmd1.Parameters.AddWithValue("@OwnedBy", ownedbyAdd);
+            cmd1.Parameters.AddWithValue("@Room", locationRoomAdd);
+            cmd1.Parameters.AddWithValue("@RoomLetter", letterAdd);
+            cmd1.Parameters.AddWithValue("@PurchaseDate", purchaseDateAdd);
+            cmd1.Parameters.AddWithValue("@AuxComputerDate", auxComputerAdd);
+            cmd1.ExecuteScalar();
+
+
+
+
+            System.Data.SqlClient.SqlCommand cmd2 = new System.Data.SqlClient.SqlCommand();
+            cmd2.Connection = conn;
+            cmd2.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd2.CommandText = "[dbo].[sp_Inventory_DeleteRecordTemp]";
+            cmd2.Parameters.AddWithValue("@SerialNumber", serialNumberAdd);
+
+            cmd2.ExecuteScalar();
+
+            Response.Redirect("InventoryValidation.aspx");
+
+        }
+
+
 </script>
  
     <script type="text/javascript">
@@ -557,7 +574,9 @@
      <script type="text/javascript">
 			// TODO: make this work
          //autocomplete User
+         
          $(document).ready(function () {
+             
              ///with jquery, there is a jquery function object represented by $
              //everything you pass to it becomes a jquery object with events and functions
              //to make things more convenient
@@ -565,30 +584,36 @@
 
              //$(".date").datepicker();
 
+             var users=<%= users_json %>;
+             var paws=new Array();
+
+             $.each(users, function(i, ele){
+                 paws.push(ele.value);
+             });
     
              $("#inventoryUser").autocomplete({
                  delay: 5, //how long it takes to display the list
-                 source: <%= GetAllFacStaffPhdUsers() %>,
+                 source: paws, //
                  minLength: 0, //begin suggesting completions when the field is empty
                  autoFocus: true//automatically populate the box with the current suggestion
              });
 
-         })
+             //function change(){
+             //    alert('changed');
+            // }
 
-         $("#inventoryUser").change(function () {
-             var val = inventoryUser.val();
-             var users = GetAllFacStaffPhdUsers();
-             //$('#inventoryUserPawprint').val("");
-             for (var i in users) {
-                 if (users[i].value == val) {
-                     $('#inventoryUserPawprint').val(users[i].value);
-                     $('#inventoryUser').val(users[i].label);
+             $("#inventoryUser").focusout(function () {
+                 var val = $("#inventoryUser").val();
+                 for (var i in users) {
+                 if (users[i].value == val) { 
+                     $('#inventoryUserPawprint').val(users[i].label);               
+                     $('#inventoryUser').val(users[i].value);                         
                      return;
                  }
              }
          });
          
-
+         })
          
 
         // when user selects a value in the user box, it keeps the pawprint int he fort box, and puts the name in the  second
@@ -604,8 +629,27 @@
 
                 </script>                
                 
-                
-                
+    <script type="text/javascript">
+        $(function() {
+            $('#inventoryPurchaseDate').datepicker();
+        });
+        </script>
+            
+    <script type="text/javascript">
+        $(function(){
+            var d = new Date();
+            d = $('#inventoryPurchaseDate').val().split('/'||'-'||','||':');
+            var n = d.getMonth();
+            var monthnames="JanFebMarAprMayJunJulAugSepOctNovDec";
+            var a = (monthnames.indexOf(monthnames.toLowerCase()) / 3 + 1 );
+            var stringToParse = $('#inventoryPurchaseDate').val();
+            var dueDate       = stringToParse.match(/\bWed(?:nes)?)|(?:Thur?s?)|(?:Fri)|(?:Sat(?:ur)?)|(?:Sun))(?:day)?\b[:\-,]?\s*[a-zA-Z]{3,9}\s+\d{1,2}\s*,?\s*\d{4}/);
+            var d = new Date(dueDate); 
+            $('#inventoryPurchaseDate').val() = 
+            if(str)
+             
+        }
+    </script>    
                 
     <script type="text/javascript"> 
         $(function() {
@@ -746,12 +790,15 @@
             });
         });
     </script>--%>
+
+    
+
     <style type="text/css">
         input[name=inventoryUser] {
-            width: 70%;
+            width: 48%;
         }
         input[name=inventoryUserPawprint] {
-            width: 26%;
+            width: 48%;
             margin-right: 0px;
         }
         #content .invalid {font-style: italic;
@@ -789,13 +836,14 @@
                 <asp:Label runat="server" ID="lblModel">Model</asp:Label>
                 <input runat="server" id="inventoryModel" name="inventoryModel" type="text"  required>
                 <asp:Label runat="server" ID="lblComputerName">Computer Name</asp:Label>
-                <input runat="server" id="inventoryComputerName" name="inventoryComputerName" type="text"  required>
+                <input runat="server" id="inventoryComputerName" name="inventoryComputerName" type="text">
                 <asp:Label runat="server" ID="lblCategory">Category </asp:Label>
                 <input runat="server" id="inventoryCategory" name="inventoryCategory" type="text" required>
+
                 <asp:Label runat="server" ID="lblUser"> User </asp:Label>
                 <div>
-                <input runat="server" type="text" id="inventoryUser" name="inventoryUser"  />
-                <input runat="server" type="text" id="inventoryUserPawprint" tabindex="-1" name="inventoryUser" />
+                <input runat="server" type="text" id="inventoryUser" name="inventoryUser"  /> <!-- onchange ="change()" -->
+                <input runat="server" type="text" id="inventoryUserPawprint" tabindex="-1" name="inventoryUserPawprint" readonly/> <!-- Added read only parameter-->
                     </div>
                 <asp:Label runat="server" ID="lblDepartments"> Department </asp:Label>
                 <input runat="server" id="inventoryDepartment" name="inventoryDepartment" type="text" required>

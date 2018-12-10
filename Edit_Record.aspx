@@ -1,309 +1,294 @@
 <%@ Page Language="C#" %>
+
 <%@ Import Namespace="System.DirectoryServices" %>
 <%@ Import Namespace="System.Data" %>
 <%@ Import Namespace="System.IO" %>
-<%@ Assembly Src="DatabaseStoredProcedure.cs" %>
+<%@ Import Namespace="System.Net" %>
+<%--<%@ Assembly Src="TSWebservices.cs" %>--%>
+<%--<%@ Assembly Src="DatabaseStoredProcedure.cs" %>--%>
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <!doctype HTML>
 <script runat="server">
 
-   public int differenceitemid = 0;
-   public string[] myarrayDepartment;
-   public string myarray_jsonDepartment;
-   public string[] myarrayCategory;
-   public string myarray_jsonCategory;
-   public string[] myarrayType;
-   public string myarray_jsonType;
-   public string[] myarrayOwnedBy;
-   public string myarray_jsonOwnedBy;
+
+            public string[] myarrayDepartment;
+            public string myarray_jsonDepartment;
+            public string[] myarrayCategory;
+            public string myarray_jsonCategory;
+            public string[] myarrayType;
+            public string myarray_jsonType;
+            public string[] myarrayOwnedBy;
+            public string myarray_jsonOwnedBy;
+
+            public string users_json;
+            private static string Connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["TCOBInventoryDBEntities"].ConnectionString;
 
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
-        System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
+            protected void page_load(object sender, EventArgs e)
+            {
 
-        conn.Open();
+            //string connstr = "server=sql2005.iats.missouri.edu;integrated security = true;database=mu_bus_techservices_1;";
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connectionstring);
+
+            conn.Open();
         
-        //Comment: use the serial number from the previous page where you display data from temp table
+        //comment: use the serial number from the previous page where you display data from temp table
         
         string serialnum = Request.QueryString["id"];
-        
-        System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-        cmd.Connection = conn;
+
+            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
+            cmd.Connection = conn;
         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-        cmd.CommandText = "[dbo].[sp_Inventory_GetRecordTemp]";
-        cmd.Parameters.AddWithValue("@SerialNum", serialnum);
+        cmd.CommandText = "[dbo].[sp_inventory_getrecordtemp]";
+        cmd.Parameters.AddWithValue("@serialnum", serialnum);
 
         System.Data.SqlClient.SqlDataReader reader = cmd.ExecuteReader();
+       
         if(reader.HasRows == true)
         {
 
-        System.Data.DataTable dt = new System.Data.DataTable();
-        dt.Load(reader);
+                System.Data.DataTable dt = new System.Data.DataTable();
+            dt.Load(reader);
 
-        string serialNumberTemp = dt.Rows[0]["SerialNumber"].ToString();
-        string makeTemp = dt.Rows[0]["Make"].ToString();
-        string modelTemp = dt.Rows[0]["Model"].ToString();
-        string computerNameTemp = dt.Rows[0]["ComputerName"].ToString();
-        string typeTemp = dt.Rows[0]["Type"].ToString();
-        string categoryTemp = dt.Rows[0]["Category"].ToString();
-        string userTemp = dt.Rows[0]["User"].ToString();
-        string userPawprintTemp = dt.Rows[0]["UserPawprint"].ToString();
-        string departmentTemp = dt.Rows[0]["Department"].ToString();
-        string roomTemp = dt.Rows[0]["Room"].ToString();
-        string letterTemp = dt.Rows[0]["Letter"].ToString();  
-        string buildingTemp = dt.Rows[0]["Building"].ToString();
-        string noteTemp = dt.Rows[0]["Note"].ToString();     
-        string ownedByTemp = dt.Rows[0]["OwnedBy"].ToString();
-        string purchaseDateTemp = dt.Rows[0]["PurchaseDate"].ToString();
-        string auxComputerDateTemp = dt.Rows[0]["AuxComputerDate"].ToString();
-            
+                string serialnumbertemp = dt.Rows[0]["serialnumber"].ToString();
+            string maketemp = dt.Rows[0]["make"].ToString();
+            string modeltemp = dt.Rows[0]["model"].ToString();
+            string computernametemp = dt.Rows[0]["computername"].ToString();
+            string typetemp = dt.Rows[0]["type"].ToString();
+            string categorytemp = dt.Rows[0]["category"].ToString();
+            string usertemp = dt.Rows[0]["user"].ToString();
+            string userpawprinttemp = dt.Rows[0]["userpawprint"].ToString();
+            string departmenttemp = dt.Rows[0]["department"].ToString();
+            string locationtemp = dt.Rows[0]["location"].ToString();
+            string roomlettertemp = dt.Rows[0]["roomLetter"].ToString();
+            string buildingtemp = dt.Rows[0]["building"].ToString();
+            string notetemp = dt.Rows[0]["note"].ToString();
+            string ownedbytemp = dt.Rows[0]["ownedby"].ToString();
+            string purchasedatetemp = dt.Rows[0]["purchasedate"].ToString();
+            string auxcomputerdatetemp = dt.Rows[0]["auxcomputerdate"].ToString();
 
-        txtSerialNumberTemp.Value = serialNumberTemp;
-        txtMakeTemp.Value = makeTemp;
-        txtModelTemp.Value = modelTemp;
-        txtComputerNameTemp.Value = computerNameTemp;
-        txtTypeTemp.Value = typeTemp;
-        txtCategoryTemp.Value = categoryTemp;
-        txtUserTemp.Value = userTemp;
-        txtUserPawprintTemp.Value = userPawprintTemp;
-        txtDepartmentTemp.Value = departmentTemp;
-        txtLocationTemp.Value = roomTemp;
-        txtLetterTemp.Value = letterTemp;
-        txtBuildingTemp.Value = buildingTemp;
-        txtNoteTemp.Value = noteTemp;
-        txtOwnedByTemp.Value = ownedByTemp;
-        txtPurchaseDateTemp.Value = purchaseDateTemp;
-        txtAuxComputerDateTemp.Value = auxComputerDateTemp; 
+
+            txtSerialNumberTemp.Value = serialnumbertemp;
+                txtMakeTemp.Value = maketemp;
+                txtModelTemp.Value = modeltemp;
+                txtComputerNameTemp.Value = computernametemp;
+                txtTypeTemp.Value = typetemp;
+                txtCategoryTemp.Value = categorytemp;
+                txtUserTemp.Value = usertemp;
+                txtUserPawprintTemp.Value = userpawprinttemp;
+                txtDepartmentTemp.Value = departmenttemp;
+                txtLocationTemp.Value = locationtemp;
+                txtLetterTemp.Value = roomlettertemp;
+                txtBuildingTemp.Value = buildingtemp;
+                txtNoteTemp.Value = notetemp;
+                txtOwnedByTemp.Value = ownedbytemp;
+                txtPurchaseDateTemp.Value = purchasedatetemp;
+                txtAuxComputerDateTemp.Value = auxcomputerdatetemp; 
         
-        reader.Close();
-        }
-        
-    //Comment: Use the serial number from the inventoryValidation page to get data from the InventoryDB
+                reader.Close();
+                }
+
+        //comment: use the serial number from the inventoryvalidation page to get data from the inventorydb
 
         System.Data.SqlClient.SqlCommand command1 = new System.Data.SqlClient.SqlCommand();
         command1.Connection = conn;
         command1.CommandType = System.Data.CommandType.StoredProcedure;
-        command1.CommandText = "[dbo].[sp_Inventory_GetRecordInventoryDB]";
-        command1.Parameters.AddWithValue("@SerialNum", serialnum);
+        command1.CommandText = "[dbo].[sp_inventory_getrecordinventorydb]";
+        command1.Parameters.AddWithValue("@serialnum", serialnum);
         reader.Close();
+
         System.Data.SqlClient.SqlDataReader reader2 = command1.ExecuteReader();
 
         if (reader2.HasRows == true)
         {
-            System.Data.DataTable dt1 = new System.Data.DataTable();
-            dt1.Load(reader2);
+                System.Data.DataTable dt1 = new System.Data.DataTable();
+        dt1.Load(reader2);
 
-            string serialNumberDB = dt1.Rows[0]["SerialNumber"].ToString();
-            string makeDB = dt1.Rows[0]["Make"].ToString();
-            string modelDB = dt1.Rows[0]["Model"].ToString();
-            string computerNameDB = dt1.Rows[0]["ComputerName"].ToString();
-            string typeDB = dt1.Rows[0]["Type"].ToString();
-            string userDB = dt1.Rows[0]["User"].ToString();
-            string userPawprintDB = dt1.Rows[0]["UserPawprint"].ToString();
-            string categoryDB = dt1.Rows[0]["Category"].ToString();
-            string departmentDB = dt1.Rows[0]["Department"].ToString();
-            string buildingDB = dt1.Rows[0]["Building"].ToString();
-            string ownedByDB = dt1.Rows[0]["OwnedBy"].ToString();
-            string purchaseDateDB = dt1.Rows[0]["PurchaseDate"].ToString();
-            string auxComputerDB = dt1.Rows[0]["AuxComputerDate"].ToString();
-            string roomDB = dt1.Rows[0]["Room"].ToString();
-            string letterDB = dt1.Rows[0]["Letter"].ToString();
-            string noteDB = dt1.Rows[0]["Note"].ToString();
+                string serialnumberdb = dt1.Rows[0]["serialnumber"].ToString();
+        string makedb = dt1.Rows[0]["make"].ToString();
+        string modeldb = dt1.Rows[0]["model"].ToString();
+        string computernamedb = dt1.Rows[0]["computername"].ToString();
+        string typedb = dt1.Rows[0]["type"].ToString();
+        string userdb = dt1.Rows[0]["user"].ToString();
+        string userpawprintdb = dt1.Rows[0]["userpawprint"].ToString();
+        string categorydb = dt1.Rows[0]["category"].ToString();
+        string departmentdb = dt1.Rows[0]["department"].ToString();
+        string buildingdb = dt1.Rows[0]["building"].ToString();
+        string ownedbydb = dt1.Rows[0]["ownedby"].ToString();
+        string purchasedatedb = dt1.Rows[0]["purchasedate"].ToString();
+        string auxcomputerdb = dt1.Rows[0]["auxcomputerdate"].ToString();
+        string locationdb = dt1.Rows[0]["room"].ToString();
+        string roomletterdb = dt1.Rows[0]["letter"].ToString();
+        string notedb = dt1.Rows[0]["note"].ToString();
 
-            txtSerialNumberDB.Value = serialNumberDB;
-            //txtSerialNumberDB.ReadOnly = true;
-            txtMakeDB.Value = makeDB;
-            txtModelDB.Value = modelDB;
-            txtComputerNameDB.Value = computerNameDB;
-            txtTypeDB.Value = typeDB;
-            txtUserDB.Value = userDB;
-            txtUserPawprintDB.Value = userPawprintDB;
-            txtCategoryDB.Value = categoryDB;
-            txtDepartmentDB.Value = departmentDB;
-            txtLocationDB.Value = roomDB;
-            txtLetterDB.Value = letterDB;
-            txtBuildingDB.Value = buildingDB;
-            txtNoteDB.Value = noteDB;
-            txtOwnedByDB.Value = ownedByDB;
-            txtPurchaseDateDB.Value = purchaseDateDB;
-            txtAuxComputerDateDB.Value = auxComputerDB;
+        txtSerialNumberDB.Value = serialnumberdb;
+                txtMakeDB.Value = makedb;
+                txtModelDB.Value = modeldb;
+                txtComputerNameDB.Value = computernamedb;
+                txtTypeDB.Value = typedb;
+                txtUserDB.Value = userdb;
+                txtUserPawprintDB.Value = userpawprintdb;
+                txtCategoryDB.Value = categorydb;
+                txtDepartmentDB.Value = departmentdb;
+                txtLocationDB.Value = locationdb;
+                txtLetterDB.Value = roomletterdb;
+                txtBuildingDB.Value = buildingdb;
+                txtNoteDB.Value = notedb;
+                txtOwnedByDB.Value = ownedbydb;
+                txtPurchaseDateDB.Value = purchasedatedb;
+                txtAuxComputerDateDB.Value = auxcomputerdb;
 
-            if (txtMakeTemp.Value != txtMakeDB.Value)
-            {
-               
-            }
+                //auto complete department
+    
+                System.Data.SqlClient.SqlCommand cmd3 = new System.Data.SqlClient.SqlCommand();
+        cmd3.Connection = conn;
+                cmd3.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd3.CommandText = "[dbo].[sp_inventory_getdepartmentnames]";
+
+                System.Data.SqlClient.SqlDataReader reader4 = cmd3.ExecuteReader();
             
-            //auto complete department
+                if (reader4.HasRows == true)
+                {
+                        System.Data.DataTable dt4 = new System.Data.DataTable();
+        dt4.Load(reader4);
+                        myarrayDepartment = new String[dt4.Rows.Count];
+                        for (int i = 0; i < dt4.Rows.Count; i++)
+                        {
+                            myarrayDepartment[i] = dt4.Rows[i]["Dept"].ToString();
+        //myarray[i] = reader["Dept"].ToString();
+    }
+                }
 
            
 
-            System.Data.SqlClient.SqlCommand cmd4 = new System.Data.SqlClient.SqlCommand();
-            cmd4.Connection = conn;
-            cmd4.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd4.CommandText = "[dbo].[sp_Inventory_GetDepartmentNames]";
+                var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    myarray_jsonDepartment = serializer.Serialize(myarrayDepartment);
 
-            System.Data.SqlClient.SqlDataReader reader4 = cmd4.ExecuteReader();
+                reader4.Close();
+            
+                //auto complete category
 
-            if (reader4.HasRows == true)
-            {
-                System.Data.DataTable dt4 = new System.Data.DataTable();
-                dt4.Load(reader4);
-                myarrayDepartment = new String[dt4.Rows.Count];
-                for (int i = 0; i < dt4.Rows.Count; i++)
+                System.Data.SqlClient.SqlCommand cmd5 = new System.Data.SqlClient.SqlCommand();
+    cmd5.Connection = conn;
+                cmd5.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd5.CommandText = "[dbo].[sp_inventory_getcategory]";
+                System.Data.SqlClient.SqlDataReader reader5 = cmd5.ExecuteReader();
+            
+                if(reader5.HasRows == true)
                 {
-                    myarrayDepartment[i] = dt4.Rows[i]["Dept"].ToString();
-                    //myarray[i] = reader["Dept"].ToString();
+                        System.Data.DataTable dt5 = new System.Data.DataTable();
+    dt5.Load(reader5);
+                        myarrayCategory = new String[dt5.Rows.Count];
+                        for (int j = 0; j < dt5.Rows.Count; j++)
+                        {
+                            myarrayCategory[j] = dt5.Rows[j]["category_name"].ToString();
+                            //myarray[i] = reader["category_name"].ToString();
+                        }
+                 }
+
+
+                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                myarray_jsonCategory = serializer.Serialize(myarrayCategory);
+
+                reader5.Close();
+            
+                //autocomplete for type
+
+                System.Data.SqlClient.SqlCommand cmd6 = new System.Data.SqlClient.SqlCommand();
+    cmd6.Connection = conn;
+                cmd6.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd6.CommandText = "[dbo].[sp_inventory_getinventorytype]";
+                System.Data.SqlClient.SqlDataReader reader6 = cmd6.ExecuteReader();
+            
+                if (reader6.HasRows == true)
+                {
+                    System.Data.DataTable dt6 = new System.Data.DataTable();
+    dt6.Load(reader6);
+                    myarrayType = new string[dt6.Rows.Count];
+                    for (int j = 0; j < dt6.Rows.Count; j++)
+                    {
+                        myarrayType[j] = dt6.Rows[j]["type"].ToString();
+                        //myarray[i] = reader["type"].ToString();
+                    }
                 }
 
 
-            }
+                serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+                myarray_jsonType = serializer.Serialize(myarrayType);
 
 
-            var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-            myarray_jsonDepartment = serializer.Serialize(myarrayDepartment);
-
-
-            reader4.Close();
+                reader6.Close();
             
-            //auto complete category
+                //autpcomplete for ownedby
 
-            System.Data.SqlClient.SqlCommand cmd5 = new System.Data.SqlClient.SqlCommand();
-            cmd5.Connection = conn;
-            cmd5.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd5.CommandText = "[dbo].[sp_Inventory_GetCategory]";
+                System.Data.SqlClient.SqlCommand cmd7 = new System.Data.SqlClient.SqlCommand();
+    cmd7.Connection = conn;
+                cmd7.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd7.CommandText = "[dbo].[sp_inventory_getinventoryOwnedBy]";
+                System.Data.SqlClient.SqlDataReader reader7 = cmd7.ExecuteReader();
 
-            System.Data.SqlClient.SqlDataReader reader5 = cmd5.ExecuteReader();
 
-            if (reader5.HasRows == true)
-            {
-                System.Data.DataTable dt5 = new System.Data.DataTable();
-                dt5.Load(reader5);
-                myarrayCategory = new String[dt5.Rows.Count];
-                for (int j = 0; j < dt5.Rows.Count; j++)
+                if (reader7.HasRows == true)
                 {
-                    myarrayCategory[j] = dt5.Rows[j]["Category_Name"].ToString();
-                    //myarray[i] = reader["Dept"].ToString();
+                    System.Data.DataTable dt7 = new System.Data.DataTable();
+    dt7.Load(reader7);
+                    myarrayOwnedBy = new string[dt7.Rows.Count];
+                    for (int j = 0; j < dt7.Rows.Count; j++)
+                    {
+                        myarrayOwnedBy[j] = dt7.Rows[j]["Dept"].ToString();
+                        //myarray[i] = reader["Dept"].ToString();
+                    }
                 }
 
 
-            }
+               serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+               myarray_jsonOwnedBy = serializer.Serialize(myarrayOwnedBy);
 
+               reader7.Close();
 
-            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-            myarray_jsonCategory= serializer.Serialize(myarrayCategory);
-
-
-            reader5.Close();
-            
-            //autocomplete for type
-
-
-            System.Data.SqlClient.SqlCommand cmd6 = new System.Data.SqlClient.SqlCommand();
-            cmd6.Connection = conn;
-            cmd6.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd6.CommandText = "[dbo].[sp_Inventory_GetInventoryType]";
-
-            System.Data.SqlClient.SqlDataReader reader6 = cmd6.ExecuteReader();
-
-            if (reader6.HasRows == true)
-            {
-                System.Data.DataTable dt6 = new System.Data.DataTable();
-                dt6.Load(reader6);
-                myarrayType = new String[dt6.Rows.Count];
-                for (int j = 0; j < dt6.Rows.Count; j++)
-                {
-                    myarrayType[j] = dt6.Rows[j]["Type"].ToString();
-                    //myarray[i] = reader["Dept"].ToString();
-                }
-
-
-            }
-
-
-            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-            myarray_jsonType = serializer.Serialize(myarrayType);
-
-
-            reader6.Close();
-            
-            //autpcomplete for ownedby
-
-            System.Data.SqlClient.SqlCommand cmd7 = new System.Data.SqlClient.SqlCommand();
-            cmd7.Connection = conn;
-            cmd7.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd7.CommandText = "[dbo].[sp_Inventory_GetInventoryOwnedBy]";
-
-            System.Data.SqlClient.SqlDataReader reader7 = cmd7.ExecuteReader();
-
-            if (reader7.HasRows == true)
-            {
-                System.Data.DataTable dt7 = new System.Data.DataTable();
-                dt7.Load(reader7);
-                myarrayOwnedBy = new String[dt7.Rows.Count];
-                for (int j = 0; j < dt7.Rows.Count; j++)
-                {
-                    myarrayOwnedBy[j] = dt7.Rows[j]["Dept"].ToString();
-                    //myarray[i] = reader["Dept"].ToString();
-                }
-
-
-            }
-
-
-            serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
-            myarray_jsonOwnedBy = serializer.Serialize(myarrayOwnedBy);
-
-
-            reader7.Close();
-            
-            //code from add.aspx
-
-            //frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name");
-            //txtTypeDB.Value = GetJsonArray("sp_Inventory_GetTypes", "Type");
-            //txtCategoryDB.Value = GetJsonArray("sp_Inventory_GetCategories", "Category_Name");
-            //frmUsers.Value = TechServices.TSWebservices.GetAllFacStaffPhdUsers();
-
-            //frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name");
            
-           String WarningColor = "#fff39d";
+               string warningcolor = "#fff39d";
              
-            if (txtMakeTemp.Value != txtMakeDB.Value)
-            {
-                trowMake.Style.Add("background-color", WarningColor);
-            }
-            if (txtModelTemp.Value != txtModelDB.Value)
-            {
-                trowModel.Style.Add("background-color", WarningColor);
-            }
-            if (txtComputerNameTemp.Value != txtComputerNameDB.Value)
-            {
-                trowComputerName.Style.Add("background-color", WarningColor);
+                if (txtMakeTemp.Value != txtMakeDB.Value)
+                {
+                    trowMake.Style.Add("background-color", warningcolor);
+                }
+
+                if (txtModelTemp.Value != txtModelDB.Value)
+                {
+                    trowModel.Style.Add("background-color", warningcolor);
+                }
+
+                if (txtComputerNameTemp.Value != txtComputerNameDB.Value)
+                {
+                    trowComputerName.Style.Add("background-color", warningcolor);
+                }
+
+                users_json = TechServices.TSWebservices.GetAllFacStaffPhdUsers(); //uncommented
             }
         }
-    }
+
+            
 
     protected void btnConfirm_Click(object sender, EventArgs e)
     {
-
         string serialNumberUpdate = Request.Form["txtSerialNumberDB"];
         string makeUpdate = Request.Form["txtMakeDB"];
         string modelUpdate = Request.Form["txtModelDB"];
         string computerNameUpdate = Request.Form["txtComputerNameDB"];
         string typeUpdate = Request.Form["txtTypeDB"];
+        string categoryUpdate = Request.Form["txtCategoryDB"];
         string userUpdate = Request.Form["txtUserDB"];
         string userPawprintUpdate = Request.Form["txtUserPawprintDB"];
-        string categoryUpdate = Request.Form["txtCategoryDB"];
         string departmentUpdate = Request.Form["txtDepartmentDB"];
-        string roomUpdate = Request.Form["txtLocationDB"];
-        string letterUpdate = Request.Form["txtLetterDB"];
+        string locationUpdate = Request.Form["txtLocationDB"];
+        string roomLetterUpdate = Request.Form["txtLetterDB"];
         string buildingUpdate = Request.Form["txtBuildingDB"];
         string noteUpdate = Request.Form["txtNoteDB"];
         string ownedByUpdate = Request.Form["txtOwnedByDB"];
         string purchaseDateUpdate = Request.Form["txtPurchaseDateDB"];
-        string auxComputerUpdate = Request.Form["txtAuxComputerDB"];
-            
+        string auxComputerUpdate = Request.Form["txtAuxComputerDateDB"];
+
         String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
         System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
 
@@ -311,8 +296,8 @@
         System.Data.SqlClient.SqlCommand cmd1 = new System.Data.SqlClient.SqlCommand();
         cmd1.Connection = conn;
         cmd1.CommandType = System.Data.CommandType.StoredProcedure;
-
         cmd1.CommandText = "[dbo].[sp_Inventory_UpdateInventoryDB]";
+
         cmd1.Parameters.AddWithValue("@SerialNumber", serialNumberUpdate);
         cmd1.Parameters.AddWithValue("@Make", makeUpdate);
         cmd1.Parameters.AddWithValue("@Model", modelUpdate);
@@ -322,18 +307,16 @@
         cmd1.Parameters.AddWithValue("@UserPawprint", userPawprintUpdate);
         cmd1.Parameters.AddWithValue("@Category", categoryUpdate);
         cmd1.Parameters.AddWithValue("@Department", departmentUpdate);
-        cmd1.Parameters.AddWithValue("@Room", roomUpdate);
-        cmd1.Parameters.AddWithValue("@Letter", letterUpdate);
+        cmd1.Parameters.AddWithValue("@Location", locationUpdate);
+        cmd1.Parameters.AddWithValue("@Letter", roomLetterUpdate);
         cmd1.Parameters.AddWithValue("@Building", buildingUpdate);
         cmd1.Parameters.AddWithValue("@Note", noteUpdate);
         cmd1.Parameters.AddWithValue("@OwnedBy", ownedByUpdate);
         cmd1.Parameters.AddWithValue("@PurchaseDate", purchaseDateUpdate);
         cmd1.Parameters.AddWithValue("@AuxComputerDate", auxComputerUpdate);
         cmd1.ExecuteScalar();
-        
-        
 
-        
+
         System.Data.SqlClient.SqlCommand cmd2 = new System.Data.SqlClient.SqlCommand();
         cmd2.Connection = conn;
         cmd2.CommandType = System.Data.CommandType.StoredProcedure;
@@ -343,8 +326,12 @@
         cmd2.ExecuteScalar();
 
         Response.Redirect("InventoryValidation.aspx");
-        
     }
+
+    //frmDepartments.Value = GetJsonArray("sp_Get_Departments", "Department_Name"); //Uncommneted
+    //frmTypes.Value = GetJsonArray("sp_Inventory_GetTypes", "Type"); //Uncommneted
+    //frmCategories.Value = GetJsonArray("sp_Inventory_GetCategories", "Category_Name"); //Uncommneted
+    //frmUsers.Value = TechServices.TSWebservices.GetAllFacStaffPhdUsers(); //Uncommneted
 
 </script>
 
@@ -436,12 +423,15 @@
     <script type="text/javascript">
             $(document).ready(function () {
                 $("#btnCorrectLocation").click(function () {
-                    $("#txtLocationDB").val($("#txtLocaitonTemp").val());
+                    $("#txtLocationDB").val($("#txtLocationTemp").val());
+                    $("#txtLetterDB").val($("#txtLetterTemp").val()); //Added updating the value for letter
                    
                 });
             })
 
     </script>
+
+
     <script type="text/javascript">
           $(document).ready(function () {
               $("#btnCorrectBuilding").click(function () {
@@ -465,7 +455,7 @@
      <script type="text/javascript">
              $(document).ready(function () {
                  $("#btnCorrectPurchaseDate").click(function () {
-                     $("#txtPurchaseDateByDB").val($("#txtPurchaseDateTemp").val());
+                     $("#txtPurchaseDateDB").val($("#txtPurchaseDateTemp").val()); //updated txtPurchaseDateByDB to txtPurchaseDateDB
                    
                  });
              })
@@ -476,7 +466,7 @@
      <script type="text/javascript">
          $(document).ready(function () {
              $("#btnCorrectAuxComputerDate").click(function () {
-                 $("#txtAuxComputerDateByDB").val($("#txtAuxComputerDateTemp").val());
+                 $("#txtAuxComputerDateDB").val($("#txtAuxComputerDateTemp").val()); //updated txtAuxComputerDateByDB to txtAuxComputerDateDB
                    
              });
          })
@@ -492,6 +482,8 @@
             //here, I am using $(document).ready to wait until the document has loaded to execute my JS
 
             $(".date").datepicker();
+
+          
 
             $("#txtDepartmentDB").autocomplete({
                 delay: 5, //how long it takes to display the list
@@ -559,30 +551,77 @@
              })
                 </script>
     <script type="text/javascript"> 
-        $(function() {
-            $( "#txtPurchaseDateDB" ).datepicker();
-        });
+        $(document).ready(function () {
+            $("#txtPurchaseDateDB").datepicker();
+            $("#txtAuxComputerDateDB").datepicker();
+            });
     </script>
-     <script type="text/javascript"> 
-          $(function() {
-              $( "#txtAuxComputerDateDB" ).datepicker();
-          });
-    </script>
-<%--    <script runat ="server">
-    JavaScriptSerializer serializer = new JavaScriptSerializer();
-    String GetJsonArray(String Command, String Field) {
-                DataTable data = new Inventory_DB.DatabaseStoredProcedure(Command).ExecuteReader();
-                String[] arrayToLoad = new String[data.Rows.Count];
-                for (int i = 0; i < data.Rows.Count; i++) {
-                    arrayToLoad[i] = data.Rows[i][Field].ToString();
-                }
-                return serializer.Serialize(arrayToLoad);
-                }
+     
+    
+    <script type="text/javascript">
+        // TODO: make this work
+        //autocomplete User
+        $(document).ready(function () {
+            ///with jquery, there is a jquery function object represented by $
+            //everything you pass to it becomes a jquery object with events and functions
+            //to make things more convenient
+            //here, I am using $(document).ready to wait until the document has loaded to execute my JS
 
-     </script>--%>
+            //$(".date").datepicker();
+
+            //obj = JSON.parse(users_json);
+                
+            var users=<%= users_json %>;
+            var paws=new Array();
+
+            $.each(users, function(i, ele){
+                paws.push(ele.value);
+            });
+
+            $("#txtUserTemp").autocomplete({
+                delay: 5, //how long it takes to display the list
+                source: paws,
+                 minLength: 0, //begin suggesting completions when the field is empty
+                 autoFocus: true//automatically populate the box with the current suggestion
+             });
+
+            //$('#txtPurchaseDateTemp').datepicker();
+            
+
+            //$('#txtAuxComputerDateTemp').datepicker();
+            
+
+            $("#txtUserTemp").focusout(function () {
+                var val = $("#txtUserTemp").val();
+                var users = <%= users_json %>;
+                for (var i in users) {
+                     if (users[i].value == val) {                                           
+                         $('#txtUserPawprintTemp').val(users[i].label);                  
+                         $('#txtUserTemp').val(users[i].value);                           
+                         return;
+                     }
+                 }
+             });
+         
+         })
+         
+
+
+                </script>   
 <%--<script runat="server">
     JavaScriptSerializer serializer = new JavaScriptSerializer();
 
+    
+    String GetJsonArray(String Command, String Field) 
+        {
+                DataTable data = new Inventory_DB.DatabaseStoredProcedure(Command).ExecuteReader();
+                String[] arrayToLoad = new String[data.Rows.Count];
+                for (int i = 0; i < data.Rows.Count; i++) 
+                {
+                    arrayToLoad[i] = data.Rows[i][Field].ToString();
+                }
+                return serializer.Serialize(arrayToLoad);
+        }
 
             String GetJsonArray(String Command, String Field) {
                 DataTable data = new Inventory_DB.DatabaseStoredProcedure(Command).ExecuteReader();
@@ -663,7 +702,11 @@
                                 <asp:Label runat="server" ID="lblSerialNumberDB" style="width:50%" > Serial Number </asp:Label>
                             </div>
                             <div>
-                                <input runat="server" id="txtSerialNumberDB" name="txtSerialNumberDB" type="text"  style ="width:80%" disabled="disabled">
+                                <input runat="server" id="txtSerialNumberDB" name="txtSerialNumberDB" type="text"  style ="width:80%" readonly>
+                            </div>
+                            <%--test line--%>
+                            <div>
+                                <label runat="server" id="response" name="response" type="text"  style ="width:80%" visible="false" disabled="disabled" ></label>
                             </div>
                         </td>
                     </tr>
@@ -729,7 +772,7 @@
                                 <asp:Label runat="server" ID="lblComputerNameDB" style="width:50%" > Computer Name </asp:Label>
                             </div>
                             <div>
-                                <input runat="server" id="txtComputerNameDB" name="txtComputerNameDB" type="text"  style ="width:80%" required>
+                                <input runat="server" id="txtComputerNameDB" name="txtComputerNameDB" type="text"  style ="width:80%" required value="abc">
                             </div>
                         </td>
                     </tr>
@@ -784,8 +827,8 @@
                                 <asp:Label runat="server" ID="lblUserTemp" style="width:50%" > User </asp:Label>
                             </div>
                             <div>
-                                <input runat="server" id="txtUserTemp" name="txtUserTemp" type="text" style="width: 80%">
-                                <input runat="server" id="txtUserPawprintTemp" name="txtUserPawprintTemp" type="text"  style ="width:80%" >
+                                <input runat="server" id="txtUserTemp" name="txtUserTemp" type="text" style="width: 80%" placeholder="name">
+                                <input runat="server" id="txtUserPawprintTemp" name="txtUserPawprintTemp" type="text"  style ="width:80%" placeholder="paw print">
                             </div>
                         </td>
                       
@@ -797,8 +840,8 @@
                                 <asp:Label runat="server" ID="lblUserDB" style="width:50%" > User </asp:Label>
                             </div>
                             <div>
-                                <input runat="server" id="txtUserDB" name="txtUserDB" type="text" style="width: 80%">
-                                <input runat="server" id="txtUserPawprintDB" name="txtUserPawprintDB" type="text"  style ="width:80%" >
+                                <input runat="server" id="txtUserDB" name="txtUserDB" type="text" style="width: 80%" placeholder="name">
+                                <input runat="server" id="txtUserPawprintDB" name="txtUserPawprintDB" type="text"  style ="width:80%" placeholder="paw print">
                             </div>
                         </td>
                     </tr>

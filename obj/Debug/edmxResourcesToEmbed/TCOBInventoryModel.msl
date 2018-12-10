@@ -1,0 +1,779 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TCOBInventoryDBModelStoreContainer" CdmEntityContainer="TCOBInventoryDBEntities">
+    <EntitySetMapping Name="ComputerInventory_tblCategory">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblCategory">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblCategory">
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblDepartment">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblDepartment">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblDepartment">
+          <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="Valid" ColumnName="Valid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblMain">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblMain">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblMain">
+          <ScalarProperty Name="CompName" ColumnName="CompName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="SN" ColumnName="SN" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="Transferred" ColumnName="Transferred" />
+          <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="writeConflict" ColumnName="writeConflict" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblMake">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblMake">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblMake">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Manuf" ColumnName="Manuf" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblModel">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblModel">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblModel">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblOwnedBy">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblOwnedBy">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblOwnedBy">
+          <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="Valid" ColumnName="Valid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblParse">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblParse">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblParse">
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Memory" ColumnName="Memory" />
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="OSSP" ColumnName="OSSP" />
+          <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
+          <ScalarProperty Name="ProcessorDesc" ColumnName="ProcessorDesc" />
+          <ScalarProperty Name="Processor" ColumnName="Processor" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ClockSpeed" ColumnName="ClockSpeed" />
+          <ScalarProperty Name="PRocessorID" ColumnName="PRocessorID" />
+          <ScalarProperty Name="Network" ColumnName="Network" />
+          <ScalarProperty Name="MAC" ColumnName="MAC" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblType">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblType">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblUserStatus">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUserStatus">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblUserStatus">
+          <ScalarProperty Name="USID" ColumnName="USID" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory3">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory3">
+        <MappingFragment StoreEntitySet="ComputerInventory3">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTempInventories">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTempInventory">
+        <MappingFragment StoreEntitySet="tblTempInventory">
+          <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTestInventories">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestInventory">
+        <MappingFragment StoreEntitySet="tblTestInventory">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTestTemp1Inventory">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestTemp1Inventory">
+        <MappingFragment StoreEntitySet="tblTestTemp1Inventory">
+          <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTestTempInventories">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestTempInventory">
+        <MappingFragment StoreEntitySet="tblTestTempInventory">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Departments_Serviced">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.TS_Departments_Serviced">
+        <MappingFragment StoreEntitySet="TS_Departments_Serviced">
+          <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+          <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventories">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory">
+        <MappingFragment StoreEntitySet="ComputerInventory">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblLogRecords_TEST">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblLogRecords_TEST">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblLogRecords_TEST">
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Trigger" ColumnName="Trigger" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Memory" ColumnName="Memory" />
+          <ScalarProperty Name="OS" ColumnName="OS" />
+          <ScalarProperty Name="NetworkAdapter" ColumnName="NetworkAdapter" />
+          <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblOptions">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblOptions">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblOptions">
+          <ScalarProperty Name="Version" ColumnName="Version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblUser">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUser">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventory_tblUserStorage">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUserStorage">
+        <MappingFragment StoreEntitySet="ComputerInventory_tblUserStorage">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Pawprint" ColumnName="Pawprint" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComputerInventoryTests">
+      <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventoryTest">
+        <MappingFragment StoreEntitySet="ComputerInventoryTest">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Add_Inventory" FunctionName="TCOBInventoryDBModel.Store.Add_Inventory" />
+    <FunctionImportMapping FunctionImportName="Add_TempTable" FunctionName="TCOBInventoryDBModel.Store.Add_TempTable" />
+    <FunctionImportMapping FunctionImportName="Add_TestTemp" FunctionName="TCOBInventoryDBModel.Store.Add_TestTemp" />
+    <FunctionImportMapping FunctionImportName="Delete_Author" FunctionName="TCOBInventoryDBModel.Store.Delete_Author" />
+    <FunctionImportMapping FunctionImportName="Delete_Inventory_DeleteTempTableData" FunctionName="TCOBInventoryDBModel.Store.Delete_Inventory_DeleteTempTableData" />
+    <FunctionImportMapping FunctionImportName="Delete_Record_Temp" FunctionName="TCOBInventoryDBModel.Store.Delete_Record_Temp" />
+    <FunctionImportMapping FunctionImportName="Delete_TempTableData" FunctionName="TCOBInventoryDBModel.Store.Delete_TempTableData" />
+    <FunctionImportMapping FunctionImportName="Delete_TempTestData" FunctionName="TCOBInventoryDBModel.Store.Delete_TempTestData" />
+    <FunctionImportMapping FunctionImportName="Delete_TestData" FunctionName="TCOBInventoryDBModel.Store.Delete_TestData" />
+    <FunctionImportMapping FunctionImportName="Get_Author_Details" FunctionName="TCOBInventoryDBModel.Store.Get_Author_Details" />
+    <FunctionImportMapping FunctionImportName="Get_Author_Id" FunctionName="TCOBInventoryDBModel.Store.Get_Author_Id" />
+    <FunctionImportMapping FunctionImportName="Get_Category" FunctionName="TCOBInventoryDBModel.Store.Get_Category" />
+    <FunctionImportMapping FunctionImportName="Get_DepartmentNames" FunctionName="TCOBInventoryDBModel.Store.Get_DepartmentNames" />
+    <FunctionImportMapping FunctionImportName="Get_InventoryData" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_InventoryData_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_InventoryMake" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryMake" />
+    <FunctionImportMapping FunctionImportName="Get_InventoryModel" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryModel" />
+    <FunctionImportMapping FunctionImportName="Get_InventoryOwnedBy" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryOwnedBy" />
+    <FunctionImportMapping FunctionImportName="Get_InventoryType" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryType" />
+    <FunctionImportMapping FunctionImportName="Get_New_Author_Id" FunctionName="TCOBInventoryDBModel.Store.Get_New_Author_Id" />
+    <FunctionImportMapping FunctionImportName="Get_Recent_Inventory" FunctionName="TCOBInventoryDBModel.Store.Get_Recent_Inventory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Recent_Inventory_Result">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Record_InventoryDB" FunctionName="TCOBInventoryDBModel.Store.Get_Record_InventoryDB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Record_InventoryDB_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Record_Temp" FunctionName="TCOBInventoryDBModel.Store.Get_Record_Temp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Record_Temp_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_TestData" FunctionName="TCOBInventoryDBModel.Store.Get_TestData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_TestData_Result">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_TestTempData" FunctionName="TCOBInventoryDBModel.Store.Get_TestTempData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_TestTempData_Result">
+          <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_Top_Row_Num" FunctionName="TCOBInventoryDBModel.Store.Get_Top_Row_Num">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Top_Row_Num_Result">
+          <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Get_TopRowId" FunctionName="TCOBInventoryDBModel.Store.Get_TopRowId" />
+    <FunctionImportMapping FunctionImportName="Inventory_GetInventoryData" FunctionName="TCOBInventoryDBModel.Store.Inventory_GetInventoryData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Inventory_GetInventoryData_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Add_New_Data" FunctionName="TCOBInventoryDBModel.Store.sp_Add_New_Data" />
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_AddUser" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_AddUser" />
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Compare" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Compare" />
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_DeptID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_DeptID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_DeptID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Get_Users" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Get_Users">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_Get_Users_Result">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Pawprint" ColumnName="Pawprint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_MA" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_MA">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_MA_Result">
+          <ScalarProperty Name="ComputerInventory_tblModel" ColumnName="ComputerInventory_tblModel" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_MakeID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_MakeID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_MakeID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CPUType" ColumnName="CPUType" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_ModelID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_ModelID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_ModelID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_NewMake" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_NewMake" />
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_NewModel" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_NewModel" />
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Trim" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Trim">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_Trim_Result">
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_ComputerInventory_TypeID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_TypeID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_TypeID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="what" ColumnName="what" />
+          <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+          <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+          <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+          <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+          <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Get_Departments" FunctionName="TCOBInventoryDBModel.Store.sp_Get_Departments" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_AddNewTempTable" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddNewTempTable" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_AddRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddRecord" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_AddTempTable" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddTempTable" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_AddUsers" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddUsers" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_CreateRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_CreateRecord" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteRecord" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteRecordTemp" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteRecordTemp" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteTempTableData" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteTempTableData" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetCategories" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetCategories_Result">
+          <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetCategory" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetCategory" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetDepartmentNames" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetDepartmentNames" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryData" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryData">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetInventoryData_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryDataFromActual" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryDataFromActual">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetInventoryDataFromActual_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryMake" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryMake" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryModel" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryModel" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryOwnedBy" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryOwnedBy" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryType" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryType" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetMakes" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetMakes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetMakes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Manuf" ColumnName="Manuf" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetModels" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetModels">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetModels_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecord">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecord_Result">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecordInventoryDB" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecordInventoryDB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecordInventoryDB_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecords">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecords_Result">
+          <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecordTemp" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecordTemp">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecordTemp_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="user" ColumnName="user" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_GetTypes" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetTypes_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateInventoryDB" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateInventoryDB" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateInventoryDBActual" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateInventoryDBActual" />
+    <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateRecord" />
+    <FunctionImportMapping FunctionImportName="sp_TempInventory_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_TempInventory_GetRecords">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempInventory_GetRecords_Result">
+          <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords" />
+    <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords_Mismatch" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords_Mismatch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempTable_GetRecords_Mismatch_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords_New" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords_New">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempTable_GetRecords_New_Result">
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Make" ColumnName="Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="User" ColumnName="User" />
+          <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+          <ScalarProperty Name="Building" ColumnName="Building" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+          <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+          <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+          <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Update_InventoryDB" FunctionName="TCOBInventoryDBModel.Store.Update_InventoryDB" />
+    <FunctionImportMapping FunctionImportName="Update_Test_Temp" FunctionName="TCOBInventoryDBModel.Store.Update_Test_Temp" />
+  </EntityContainerMapping>
+</Mapping>

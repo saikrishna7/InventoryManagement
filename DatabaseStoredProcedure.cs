@@ -12,7 +12,11 @@ namespace inventory
 
         public string ProcedureName { get; set; }
         private Dictionary<string, string> Parameters;
-        private static string Connectionstring = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
+
+        //private static string Connectionstring = "server=;Integrated Security = True;DATABASE=InventoryDB;";
+                                                    //"SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
+
+        private static string Connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["TCOBInventoryDBEntities"].ConnectionString;
         private static SqlConnection Connection = null;
         private SqlCommand Command;
 

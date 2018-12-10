@@ -29,17 +29,38 @@ namespace inventory
                 GenerateTableRowsFromSp("[dbo].[sp_TempTable_GetRecords_Mismatch]", ref TableWithMismatchRecords);
             }
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        //Upload the file to C:\\Uploads\\ when user clicks on upload file
+        protected void btnUploadFile_Click(object sender, EventArgs e)
         {
 
+            if (FileUploadInventoryLog.HasFile)
+                try
+                {
+                    string path = @"C:\Uploads";
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    FileUploadInventoryLog.SaveAs("C:\\Uploads\\" +
+                         FileUploadInventoryLog.FileName);
+                    lblUploadFile.Text = FileUploadInventoryLog.PostedFile.FileName;
+                    //+ "<br>" +
+                    //FileUploadInventoryLog.PostedFile.ContentLength + " kb<br>" +
+                    //"Content type: " +
+                    //FileUploadInventoryLog.PostedFile.ContentType;
 
+                }
+                catch (Exception ex)
+                {
+                    lblUploadFile.Text = "ERROR: " + ex.Message.ToString();
+                }
+            else
+            {
+                lblUploadFile.Text = "You have not specified a file.";
+            }
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         String[] TableHeaders = {
                                       "SerialNumber"
@@ -153,7 +174,8 @@ namespace inventory
                         var tableCell = new System.Web.UI.HtmlControls.HtmlTableCell("td");
                         var content = row[field].ToString();
                         //if (dt.Columns.IndexOf(field) > row.ItemArray.Count() - 6 && content.Length > 0) content = content.Substring(0, content.IndexOf(" "));
-
+                        
+                        
 
                         var innerHtml = "<a href='AddFromLog.aspx?id=" + row.ItemArray[1] + "' target='_blank'><div>" + content + "</div></a>";
 
@@ -169,8 +191,9 @@ namespace inventory
         protected void btnRun_Click(object sender, EventArgs e)
         {
             try
-            {
-                using (TextFieldParser parser = new TextFieldParser("C:\\Uploads\\" + lblUploadFile.Text))
+            {   
+                using (TextFieldParser parser = new TextFieldParser("C:\\Users\\skaf48\\Desktop\\test.csv"))// + lblUploadFile.Text)) //hardcoded file name to see if logic works because login to 
+                    //save uploaded file to local machine is not working
                 //string file = "C:\\Uploads\\" + FileUploadInventoryLog.PostedFile.FileName;
                 //MessageBox.Show("C:\\Uploads\\" + lblUploadFile.Text);
                 //using (TextFieldParser parser = new TextFieldParser(file)

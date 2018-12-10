@@ -48,17 +48,19 @@
         <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 
         <script runat="server">
-        public string[] myarray = new string[40];
-        public string myarray_json;
-        protected void Page_Load(object sender, EventArgs e)
-        {
+            public string[] myarray = new string[40];
+            public string myarray_json;
+            private static string Connectionstring = System.Configuration.ConfigurationManager.ConnectionStrings["TCOBInventoryDBEntities"].ConnectionString;
 
-            //myarray[0] = "faculty";
-            //myarray[1] = "student";
+            protected void Page_Load(object sender, EventArgs e)
+            {
+
+                //myarray[0] = "faculty";
+                //myarray[1] = "student";
 
 
-                String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
-                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connstr);
+                //String Connstr = "SERVER=sql2005.iats.missouri.edu;Integrated Security = True;DATABASE=MU_BUS_TechServices_1;";
+                System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(Connectionstring);
                 conn.Open();
 
                 System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
@@ -81,13 +83,13 @@
 
                 }
 
-          
+
                 var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
                 myarray_json = serializer.Serialize(myarray);
 
-        }
+            }
 
-        
+
     </script>
 
             <script type="text/javascript">

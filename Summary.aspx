@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" %>
 <%@ Import Namespace="System.DirectoryServices" %>
 <%@ Import Namespace="System.Data" %>
-<%@ Assembly Src="DatabaseStoredProcedure.cs" %>
+<%--<%@ Assembly Src="DatabaseStoredProcedure.cs" %>--%>
 <!doctype HTML>
 <html class="no-js" lang="en">
 <head id="apps-business-missouri-edu" data-template-set="html5-reset">
@@ -13,8 +13,7 @@
 	    <meta name="DC.title" content="Inventory" />
 	    <title>Inventory Management App</title>
     <link rel="stylesheet" type="text/css" href="//apps.business.missouri.edu/css/base-1.1.css" />
-        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>TCOBInventoryDBEntities        <script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
         <script type="text/javascript">
             $(document).ready(function () {
@@ -70,7 +69,7 @@
             });
         </script>
         <script runat="server">
-        
+
             String[] TableHeaders = {
                                       "Serial"
                                       ,"Type"
@@ -89,15 +88,15 @@
                                       ,"Type"
                                       ,"Make"
                                       ,"Model"
-                                      ,"User"
                                       ,"UserPawprint"
+                                      ,"User"
                                       ,"Category"
                                       ,"Department"
-                                      ,"Location"
+                                      ,"Room"
                                       ,"OwnedBy"
                                       ,"PurchaseDate"
                                       ,"AuxComputerDate"};
-        
+
             void GenerateTableHeader(String[] headers, ref HtmlTable table)
             {
                 var headerRow = new HtmlTableRow();
@@ -113,10 +112,10 @@
             {
                 foreach (var i in DataTableHeaders) {
                     if (i == str) return true;
-                } 
+                }
                 return false;
             }
-            
+
             void GenerateTableRowsFromSp(String procedure, ref HtmlTable table)
             {
                 var storedProcedure = new inventory.DatabaseStoredProcedure(procedure);
@@ -124,15 +123,16 @@
 
                 for (var i = 0; i<query.Rows.Count; i++)
                 {
-                    
+
                     var row = query.Rows[i];
                     var htmlRow = new HtmlTableRow();
                     htmlRow.ID = i.ToString();
                     htmlRow.Attributes.Add("class", "data-row");
                     foreach (var col in query.Columns )
                     {
+
                         var field = col.ToString();
-                       if (!check_is_header(field)) continue;
+                        if (!check_is_header(field)) continue;
                         var tableCell = new HtmlTableCell("td");
                         var content = row[field].ToString();
                         // TODO: BUG - from previous version
@@ -147,8 +147,8 @@
             public void Page_Load(object sender, EventArgs e)
             {
                 Context.Session.Add("Request URI", "Summary.aspx");
-                var logged_in = Context.Session["DomainUser"];
-                if (!(logged_in != null && (bool)logged_in == true)) Response.Redirect("Login.aspx");
+                //var logged_in = Context.Session["DomainUser"];
+                //if (!(logged_in != null && (bool)logged_in == true)) Response.Redirect("Login.aspx");
 
                 GenerateTableHeader(TableHeaders, ref informationTable);
                 GenerateTableRowsFromSp("[dbo].[sp_Inventory_GetRecords]", ref informationTable);

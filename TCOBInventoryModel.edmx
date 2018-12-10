@@ -1,0 +1,2505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TCOBInventoryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Make" />
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="Room" Type="varchar" MaxLength="64" />
+          <Property Name="Letter" Type="varchar" MaxLength="2" />
+          <Property Name="Building" Type="varchar" MaxLength="64" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="AuxComputerDate" Type="date" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="Note" Type="text" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastVerified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblCategory">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_Name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblDepartment">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="int" Nullable="false" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valid" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblfpd-doctoral-students' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblfpd-doctoral-students">
+          <Property Name="academic-unit" Type="char" MaxLength="10" />
+          <Property Name="flat-panels" Type="int" />
+          <Property Name="purchase-date" Type="datetime" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblLogRecords' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblLogRecords">
+          <Property Name="Trigger" Type="nvarchar" MaxLength="255" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="255" />
+          <Property Name="OS" Type="nvarchar" MaxLength="255" />
+          <Property Name="NetworkAdapter" Type="nvarchar" MaxLength="255" />
+          <Property Name="MACAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblLogRecords_TEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventory_tblLogRecords_TEST">
+          <Key>
+            <PropertyRef Name="Count" />
+          </Key>
+          <Property Name="Count" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trigger" Type="nvarchar" MaxLength="255" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="255" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="255" />
+          <Property Name="OS" Type="nvarchar" MaxLength="255" />
+          <Property Name="NetworkAdapter" Type="nvarchar" MaxLength="255" />
+          <Property Name="MACAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblMain">
+          <Key>
+            <PropertyRef Name="SN" />
+          </Key>
+          <Property Name="CompName" Type="nvarchar" MaxLength="15" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Make" Type="int" />
+          <Property Name="Model" Type="int" />
+          <Property Name="SN" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserStatus" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="20" />
+          <Property Name="Dept" Type="int" />
+          <Property Name="Transferred" Type="ntext" />
+          <Property Name="Purchase" Type="datetime" />
+          <Property Name="AuxComputerDate" Type="datetime" />
+          <Property Name="writeConflict" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="OwnedBy" Type="int" />
+          <Property Name="Status" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblMake">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Manuf" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblOptions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventory_tblOptions">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblOwnedBy">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="int" Nullable="false" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="Valid" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblParse">
+          <Key>
+            <PropertyRef Name="ServiceTag" />
+          </Key>
+          <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+          <Property Name="Timestamp" Type="nvarchar" MaxLength="25" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="25" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" />
+          <Property Name="ServiceTag" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="50" />
+          <Property Name="OSSP" Type="nvarchar" MaxLength="50" />
+          <Property Name="OSVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProcessorDesc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Processor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Level" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClockSpeed" Type="nvarchar" MaxLength="50" />
+          <Property Name="PRocessorID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Network" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAC" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblResults' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblResults">
+          <Property Name="compName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PingStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="SN" Type="nvarchar" MaxLength="50" />
+          <Property Name="OS" Type="nvarchar" MaxLength="100" />
+          <Property Name="CPU" Type="nvarchar" MaxLength="100" />
+          <Property Name="RAM" Type="nvarchar" MaxLength="50" />
+          <Property Name="Make" Type="nvarchar" MaxLength="50" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="errorMsg" Type="nvarchar" MaxLength="250" />
+        </EntityType>-->
+        <EntityType Name="ComputerInventory_tblType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblUpdateRecords' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ComputerInventory_tblUpdateRecords">
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventory_tblUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserStatus" Type="int" />
+          <Property Name="Department" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblUserStatus">
+          <Key>
+            <PropertyRef Name="USID" />
+          </Key>
+          <Property Name="USID" Type="int" Nullable="false" />
+          <Property Name="UserStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventory_tblUserStorage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventory_tblUserStorage">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Pawprint" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pawprint" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory3">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="AuxComputerDate" Type="date" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="Note" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.ComputerInventoryTest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ComputerInventoryTest">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Make" />
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="Room" Type="varchar" MaxLength="64" />
+          <Property Name="Letter" Type="varchar" MaxLength="2" />
+          <Property Name="Building" Type="varchar" MaxLength="64" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="AuxComputerDate" Type="date" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastUpdate" Type="datetime" />
+          <Property Name="Note" Type="text" />
+          <Property Name="ComputerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastVerified" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Make" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserStatus" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="AuxComputerDate" Type="date" />
+        </EntityType>
+        <EntityType Name="tblTempInventory">
+          <Key>
+            <PropertyRef Name="DifferenceItemId" />
+          </Key>
+          <Property Name="DifferenceItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Make" Type="varchar" MaxLength="255" />
+          <Property Name="Model" Type="varchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="varchar" MaxLength="255" />
+          <Property Name="RecordStatus" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Category" Type="varchar" MaxLength="255" />
+          <Property Name="User" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="64" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="Building" Type="varchar" MaxLength="64" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="AuxComputerDate" Type="date" />
+          <Property Name="Room" Type="varchar" MaxLength="64" />
+          <Property Name="Letter" Type="varchar" MaxLength="2" />
+          <Property Name="Note" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'C:\USERS\SAIKR\SOURCE\REPOS\TCOB-TS-INVENTORY\TCOB-TS-INVENTORY\APP_DATA\TCOBINVENTORYDB.MDF.dbo.tblTempNewInventory' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tblTempNewInventory">
+          <Property Name="SerialNumber" Type="varchar" MaxLength="255" />
+          <Property Name="Make" Type="varchar" MaxLength="255" />
+          <Property Name="Model" Type="varchar" MaxLength="255" />
+          <Property Name="ComputerName" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+          <Property Name="category" Type="varchar" MaxLength="255" />
+          <Property Name="User" Type="varchar" MaxLength="255" />
+          <Property Name="UserPawprint" Type="varchar" MaxLength="255" />
+          <Property Name="Department" Type="varchar" MaxLength="255" />
+          <Property Name="Location" Type="varchar" MaxLength="255" />
+          <Property Name="RoomLetter" Type="varchar" MaxLength="2" />
+          <Property Name="Building" Type="varchar" MaxLength="255" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+          <Property Name="OwnedBy" Type="varchar" MaxLength="255" />
+          <Property Name="PurchaseDate" Type="varchar" MaxLength="255" />
+          <Property Name="AuxComputerDate" Type="varchar" MaxLength="255" />
+          <Property Name="RecordStatus" Type="varchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="tblTestInventory">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+          <Property Name="LastModified" Type="date" />
+        </EntityType>
+        <EntityType Name="tblTestTemp1Inventory">
+          <Key>
+            <PropertyRef Name="DifferenceItemId" />
+          </Key>
+          <Property Name="DifferenceItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestId" Type="int" />
+          <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblTestTempInventory">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SerialNum" Type="varchar" MaxLength="255" />
+          <Property Name="Type" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TS_Departments_Serviced">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Department_Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Function Name="Add_Inventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="date" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="Add_TempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Add_TestTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TestId" Type="int" Mode="In" />
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_Author" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Author_Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_Inventory_DeleteTempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Delete_Record_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_TempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Delete_TempTestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Delete_TestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Author_Details" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Author_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Author_Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_DepartmentNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_InventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_InventoryMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_InventoryModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_InventoryOwnedBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_InventoryType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_New_Author_Id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Recent_Inventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_Record_InventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Record_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_TestData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_TestTempData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Get_Top_Row_Num" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Get_TopRowId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Inventory_GetInventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Add_New_Data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="studentNum" Type="varchar" Mode="In" />
+          <Parameter Name="lastName" Type="varchar" Mode="In" />
+          <Parameter Name="firstName" Type="varchar" Mode="In" />
+          <Parameter Name="pawPrint" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ComputerInventory_AddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Pawprint" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ComputerInventory_Compare" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_DeptID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_Get_Users" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_MA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_MakeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_ModelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_NewMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_NewModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_Trim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ComputerInventory_TypeID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Get_Departments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_AddNewTempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Letter" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="Note" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+          <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+          <Parameter Name="DateCreated" Type="varchar" Mode="In" />
+          <Parameter Name="LastUpdate" Type="varchar" Mode="In" />
+          <Parameter Name="LastVerified" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_AddRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model" Type="nvarchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+          <Parameter Name="Category" Type="nvarchar" Mode="In" />
+          <Parameter Name="Department" Type="nvarchar" Mode="In" />
+          <Parameter Name="Room" Type="nvarchar" Mode="In" />
+          <Parameter Name="Building" Type="nvarchar" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_AddTempTable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="RecordStatus" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Room" Type="varchar" Mode="In" />
+          <Parameter Name="Letter" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="Note" Type="text" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_AddUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FullName" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Pawprint" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_CreateRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+          <Parameter Name="Category" Type="nvarchar" Mode="In" />
+          <Parameter Name="Department" Type="nvarchar" Mode="In" />
+          <Parameter Name="Room" Type="nvarchar" Mode="In" />
+          <Parameter Name="Building" Type="nvarchar" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_DeleteRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="InventoryId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_DeleteRecordTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_DeleteTempTableData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetCategories" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetDepartmentNames" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetInventoryData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_GetInventoryDataFromActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_GetInventoryMake" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetInventoryModel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetInventoryOwnedBy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetInventoryType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetMakes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_GetRecordInventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_GetRecordTemp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_GetTypes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Inventory_UpdateInventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Letter" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="Note" Type="text" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_UpdateInventoryDBActual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Room" Type="varchar" Mode="In" />
+          <Parameter Name="Letter" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="Note" Type="text" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Inventory_UpdateRecord" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inventoryId" Type="int" Mode="In" />
+          <Parameter Name="SerialNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Type" Type="nvarchar" Mode="In" />
+          <Parameter Name="Make" Type="nvarchar" Mode="In" />
+          <Parameter Name="Model" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="nvarchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="nvarchar" Mode="In" />
+          <Parameter Name="Category" Type="nvarchar" Mode="In" />
+          <Parameter Name="Department" Type="nvarchar" Mode="In" />
+          <Parameter Name="Room" Type="nvarchar" Mode="In" />
+          <Parameter Name="Building" Type="nvarchar" Mode="In" />
+          <Parameter Name="Note" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoomLetter" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="nvarchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_TempInventory_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TempTable_GetRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TempTable_GetRecords_Mismatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TempTable_GetRecords_New" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Update_InventoryDB" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SerialNumber" Type="varchar" Mode="In" />
+          <Parameter Name="Make" Type="varchar" Mode="In" />
+          <Parameter Name="Model" Type="varchar" Mode="In" />
+          <Parameter Name="ComputerName" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
+          <Parameter Name="UserPawprint" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Department" Type="varchar" Mode="In" />
+          <Parameter Name="Location" Type="varchar" Mode="In" />
+          <Parameter Name="Building" Type="varchar" Mode="In" />
+          <Parameter Name="OwnedBy" Type="varchar" Mode="In" />
+          <Parameter Name="PurchaseDate" Type="varchar" Mode="In" />
+          <Parameter Name="AuxComputerDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Test_Temp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TestId" Type="int" Mode="In" />
+          <Parameter Name="SerialNum" Type="varchar" Mode="In" />
+          <Parameter Name="Type" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TCOBInventoryDBModelStoreContainer">
+          <EntitySet Name="ComputerInventory_tblCategory" EntityType="Self.ComputerInventory_tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblDepartment" EntityType="Self.ComputerInventory_tblDepartment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblMain" EntityType="Self.ComputerInventory_tblMain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblMake" EntityType="Self.ComputerInventory_tblMake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblModel" EntityType="Self.ComputerInventory_tblModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblOwnedBy" EntityType="Self.ComputerInventory_tblOwnedBy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblParse" EntityType="Self.ComputerInventory_tblParse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblType" EntityType="Self.ComputerInventory_tblType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory_tblUserStatus" EntityType="Self.ComputerInventory_tblUserStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory3" EntityType="Self.ComputerInventory3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTempInventory" EntityType="Self.tblTempInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTestInventory" EntityType="Self.tblTestInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTestTemp1Inventory" EntityType="Self.tblTestTemp1Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTestTempInventory" EntityType="Self.tblTestTempInventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TS_Departments_Serviced" EntityType="Self.TS_Departments_Serviced" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComputerInventory" EntityType="Self.ComputerInventory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventory].[InventoryId] AS [InventoryId], 
+    [ComputerInventory].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventory].[Type] AS [Type], 
+    [ComputerInventory].[Make] AS [Make], 
+    [ComputerInventory].[Model] AS [Model], 
+    [ComputerInventory].[User] AS [User], 
+    [ComputerInventory].[UserPawprint] AS [UserPawprint], 
+    [ComputerInventory].[Category] AS [Category], 
+    [ComputerInventory].[Department] AS [Department], 
+    [ComputerInventory].[Location] AS [Location], 
+    [ComputerInventory].[Room] AS [Room], 
+    [ComputerInventory].[Letter] AS [Letter], 
+    [ComputerInventory].[Building] AS [Building], 
+    [ComputerInventory].[OwnedBy] AS [OwnedBy], 
+    [ComputerInventory].[PurchaseDate] AS [PurchaseDate], 
+    [ComputerInventory].[AuxComputerDate] AS [AuxComputerDate], 
+    [ComputerInventory].[DateCreated] AS [DateCreated], 
+    [ComputerInventory].[LastUpdate] AS [LastUpdate], 
+    [ComputerInventory].[Note] AS [Note], 
+    [ComputerInventory].[ComputerName] AS [ComputerName], 
+    [ComputerInventory].[LastVerified] AS [LastVerified]
+    FROM [dbo].[ComputerInventory] AS [ComputerInventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComputerInventory_tblLogRecords_TEST" EntityType="Self.ComputerInventory_tblLogRecords_TEST" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventory_tblLogRecords_TEST].[Count] AS [Count], 
+    [ComputerInventory_tblLogRecords_TEST].[Trigger] AS [Trigger], 
+    [ComputerInventory_tblLogRecords_TEST].[Timestamp] AS [Timestamp], 
+    [ComputerInventory_tblLogRecords_TEST].[ComputerName] AS [ComputerName], 
+    [ComputerInventory_tblLogRecords_TEST].[UserName] AS [UserName], 
+    [ComputerInventory_tblLogRecords_TEST].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventory_tblLogRecords_TEST].[Manufacturer] AS [Manufacturer], 
+    [ComputerInventory_tblLogRecords_TEST].[Model] AS [Model], 
+    [ComputerInventory_tblLogRecords_TEST].[Memory] AS [Memory], 
+    [ComputerInventory_tblLogRecords_TEST].[OS] AS [OS], 
+    [ComputerInventory_tblLogRecords_TEST].[NetworkAdapter] AS [NetworkAdapter], 
+    [ComputerInventory_tblLogRecords_TEST].[MACAddress] AS [MACAddress], 
+    [ComputerInventory_tblLogRecords_TEST].[IPAddress] AS [IPAddress]
+    FROM [dbo].[ComputerInventory_tblLogRecords_TEST] AS [ComputerInventory_tblLogRecords_TEST]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComputerInventory_tblOptions" EntityType="Self.ComputerInventory_tblOptions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventory_tblOptions].[Version] AS [Version]
+    FROM [dbo].[ComputerInventory_tblOptions] AS [ComputerInventory_tblOptions]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComputerInventory_tblUser" EntityType="Self.ComputerInventory_tblUser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventory_tblUser].[ID] AS [ID], 
+    [ComputerInventory_tblUser].[UserName] AS [UserName], 
+    [ComputerInventory_tblUser].[UserStatus] AS [UserStatus], 
+    [ComputerInventory_tblUser].[Department] AS [Department], 
+    [ComputerInventory_tblUser].[Location] AS [Location]
+    FROM [dbo].[ComputerInventory_tblUser] AS [ComputerInventory_tblUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComputerInventory_tblUserStorage" EntityType="Self.ComputerInventory_tblUserStorage" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventory_tblUserStorage].[id] AS [id], 
+    [ComputerInventory_tblUserStorage].[FullName] AS [FullName], 
+    [ComputerInventory_tblUserStorage].[Pawprint] AS [Pawprint]
+    FROM [dbo].[ComputerInventory_tblUserStorage] AS [ComputerInventory_tblUserStorage]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ComputerInventoryTest" EntityType="Self.ComputerInventoryTest" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ComputerInventoryTest].[InventoryId] AS [InventoryId], 
+    [ComputerInventoryTest].[SerialNumber] AS [SerialNumber], 
+    [ComputerInventoryTest].[Type] AS [Type], 
+    [ComputerInventoryTest].[Make] AS [Make], 
+    [ComputerInventoryTest].[Model] AS [Model], 
+    [ComputerInventoryTest].[User] AS [User], 
+    [ComputerInventoryTest].[UserPawprint] AS [UserPawprint], 
+    [ComputerInventoryTest].[Category] AS [Category], 
+    [ComputerInventoryTest].[Department] AS [Department], 
+    [ComputerInventoryTest].[Location] AS [Location], 
+    [ComputerInventoryTest].[Room] AS [Room], 
+    [ComputerInventoryTest].[Letter] AS [Letter], 
+    [ComputerInventoryTest].[Building] AS [Building], 
+    [ComputerInventoryTest].[OwnedBy] AS [OwnedBy], 
+    [ComputerInventoryTest].[PurchaseDate] AS [PurchaseDate], 
+    [ComputerInventoryTest].[AuxComputerDate] AS [AuxComputerDate], 
+    [ComputerInventoryTest].[DateCreated] AS [DateCreated], 
+    [ComputerInventoryTest].[LastUpdate] AS [LastUpdate], 
+    [ComputerInventoryTest].[Note] AS [Note], 
+    [ComputerInventoryTest].[ComputerName] AS [ComputerName], 
+    [ComputerInventoryTest].[LastVerified] AS [LastVerified]
+    FROM [dbo].[ComputerInventoryTest] AS [ComputerInventoryTest]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TCOBInventoryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ComputerInventory_tblCategory">
+          <Key>
+            <PropertyRef Name="Category_Id" />
+          </Key>
+          <Property Name="Category_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblDepartment">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="Int32" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valid" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblMain">
+          <Key>
+            <PropertyRef Name="SN" />
+          </Key>
+          <Property Name="CompName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Make" Type="Int32" />
+          <Property Name="Model" Type="Int32" />
+          <Property Name="SN" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserStatus" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Dept" Type="Int32" />
+          <Property Name="Transferred" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Purchase" Type="DateTime" Precision="3" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="3" />
+          <Property Name="writeConflict" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="OwnedBy" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblMake">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Manuf" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblModel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblOwnedBy">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="Int32" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Valid" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblParse">
+          <Key>
+            <PropertyRef Name="ServiceTag" />
+          </Key>
+          <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Memory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OSSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OSVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProcessorDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Processor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Level" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClockSpeed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PRocessorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Network" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblUserStatus">
+          <Key>
+            <PropertyRef Name="USID" />
+          </Key>
+          <Property Name="USID" Type="Int32" Nullable="false" />
+          <Property Name="UserStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory3">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserPawprint" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblTempInventory">
+          <Key>
+            <PropertyRef Name="DifferenceItemId" />
+          </Key>
+          <Property Name="DifferenceItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ComputerName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RecordStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserPawprint" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Building" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="0" />
+          <Property Name="Room" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Letter" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTestInventory">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LastModified" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tblTestTemp1Inventory">
+          <Key>
+            <PropertyRef Name="DifferenceItemId" />
+          </Key>
+          <Property Name="DifferenceItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestId" Type="Int32" />
+          <Property Name="SerialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblTestTempInventory">
+          <Key>
+            <PropertyRef Name="TestId" />
+          </Key>
+          <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNum" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TS_Departments_Serviced">
+          <Key>
+            <PropertyRef Name="Department_ID" />
+          </Key>
+          <Property Name="Department_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Department_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Make" />
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserPawprint" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Room" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Letter" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Building" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComputerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastVerified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblLogRecords_TEST">
+          <Key>
+            <PropertyRef Name="Count" />
+          </Key>
+          <Property Name="Count" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trigger" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Timestamp" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ComputerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Memory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NetworkAdapter" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MACAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblOptions">
+          <Key>
+            <PropertyRef Name="Version" />
+          </Key>
+          <Property Name="Version" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserStatus" Type="Int32" />
+          <Property Name="Department" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ComputerInventory_tblUserStorage">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="FullName" />
+            <PropertyRef Name="Pawprint" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pawprint" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComputerInventoryTest">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+            <PropertyRef Name="SerialNumber" />
+            <PropertyRef Name="Type" />
+            <PropertyRef Name="Make" />
+            <PropertyRef Name="Model" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SerialNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Make" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserPawprint" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Room" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Letter" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Building" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OwnedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="AuxComputerDate" Type="DateTime" Precision="0" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComputerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastVerified" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="TCOBInventoryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ComputerInventory_tblCategory" EntityType="Self.ComputerInventory_tblCategory" />
+          <EntitySet Name="ComputerInventory_tblDepartment" EntityType="Self.ComputerInventory_tblDepartment" />
+          <EntitySet Name="ComputerInventory_tblMain" EntityType="Self.ComputerInventory_tblMain" />
+          <EntitySet Name="ComputerInventory_tblMake" EntityType="Self.ComputerInventory_tblMake" />
+          <EntitySet Name="ComputerInventory_tblModel" EntityType="Self.ComputerInventory_tblModel" />
+          <EntitySet Name="ComputerInventory_tblOwnedBy" EntityType="Self.ComputerInventory_tblOwnedBy" />
+          <EntitySet Name="ComputerInventory_tblParse" EntityType="Self.ComputerInventory_tblParse" />
+          <EntitySet Name="ComputerInventory_tblType" EntityType="Self.ComputerInventory_tblType" />
+          <EntitySet Name="ComputerInventory_tblUserStatus" EntityType="Self.ComputerInventory_tblUserStatus" />
+          <EntitySet Name="ComputerInventory3" EntityType="Self.ComputerInventory3" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="tblTempInventories" EntityType="Self.tblTempInventory" />
+          <EntitySet Name="tblTestInventories" EntityType="Self.tblTestInventory" />
+          <EntitySet Name="tblTestTemp1Inventory" EntityType="Self.tblTestTemp1Inventory" />
+          <EntitySet Name="tblTestTempInventories" EntityType="Self.tblTestTempInventory" />
+          <EntitySet Name="TS_Departments_Serviced" EntityType="Self.TS_Departments_Serviced" />
+          <EntitySet Name="ComputerInventories" EntityType="Self.ComputerInventory" />
+          <EntitySet Name="ComputerInventory_tblLogRecords_TEST" EntityType="Self.ComputerInventory_tblLogRecords_TEST" />
+          <EntitySet Name="ComputerInventory_tblOptions" EntityType="Self.ComputerInventory_tblOptions" />
+          <EntitySet Name="ComputerInventory_tblUser" EntityType="Self.ComputerInventory_tblUser" />
+          <EntitySet Name="ComputerInventory_tblUserStorage" EntityType="Self.ComputerInventory_tblUserStorage" />
+          <EntitySet Name="ComputerInventoryTests" EntityType="Self.ComputerInventoryTest" />
+          <FunctionImport Name="Add_Inventory">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="DateTime" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Add_TempTable">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="RecordStatus" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Add_TestTemp">
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Author">
+            <Parameter Name="Author_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Inventory_DeleteTempTableData" />
+          <FunctionImport Name="Delete_Record_Temp">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_TempTableData" />
+          <FunctionImport Name="Delete_TempTestData">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_TestData" />
+          <FunctionImport Name="Get_Author_Details" />
+          <FunctionImport Name="Get_Author_Id">
+            <Parameter Name="Author_Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Category" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_DepartmentNames" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_InventoryData" ReturnType="Collection(TCOBInventoryDBModel.Get_InventoryData_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_InventoryMake" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_InventoryModel" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_InventoryOwnedBy" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_InventoryType" ReturnType="Collection(String)" />
+          <FunctionImport Name="Get_New_Author_Id" />
+          <FunctionImport Name="Get_Recent_Inventory" ReturnType="Collection(TCOBInventoryDBModel.Get_Recent_Inventory_Result)" />
+          <FunctionImport Name="Get_Record_InventoryDB" ReturnType="Collection(TCOBInventoryDBModel.Get_Record_InventoryDB_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Record_Temp" ReturnType="Collection(TCOBInventoryDBModel.Get_Record_Temp_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_TestData" ReturnType="Collection(TCOBInventoryDBModel.Get_TestData_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_TestTempData" ReturnType="Collection(TCOBInventoryDBModel.Get_TestTempData_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Get_Top_Row_Num" ReturnType="Collection(TCOBInventoryDBModel.Get_Top_Row_Num_Result)" />
+          <FunctionImport Name="Get_TopRowId" />
+          <FunctionImport Name="Inventory_GetInventoryData" ReturnType="Collection(TCOBInventoryDBModel.Inventory_GetInventoryData_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Add_New_Data">
+            <Parameter Name="studentNum" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="firstName" Mode="In" Type="String" />
+            <Parameter Name="pawPrint" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ComputerInventory_AddUser">
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Pawprint" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ComputerInventory_Compare" />
+          <FunctionImport Name="sp_ComputerInventory_DeptID" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_DeptID_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_Get_Users" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_Get_Users_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_MA" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_MA_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_MakeID" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_MakeID_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_ModelID" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_ModelID_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_NewMake" />
+          <FunctionImport Name="sp_ComputerInventory_NewModel" />
+          <FunctionImport Name="sp_ComputerInventory_Trim" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_Trim_Result)" />
+          <FunctionImport Name="sp_ComputerInventory_TypeID" ReturnType="Collection(TCOBInventoryDBModel.sp_ComputerInventory_TypeID_Result)" />
+          <FunctionImport Name="sp_Get_Departments" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_AddNewTempTable">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Letter" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+            <Parameter Name="RecordStatus" Mode="In" Type="String" />
+            <Parameter Name="DateCreated" Mode="In" Type="String" />
+            <Parameter Name="LastUpdate" Mode="In" Type="String" />
+            <Parameter Name="LastVerified" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_AddRecord">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="RoomLetter" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_AddTempTable">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="RecordStatus" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Letter" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_AddUsers">
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Pawprint" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_CreateRecord" ReturnType="Collection(Int32)">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="RoomLetter" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_DeleteRecord">
+            <Parameter Name="InventoryId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_DeleteRecordTemp">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_DeleteTempTableData" />
+          <FunctionImport Name="sp_Inventory_GetCategories" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetCategories_Result)" />
+          <FunctionImport Name="sp_Inventory_GetCategory" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetDepartmentNames" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetInventoryData" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetInventoryData_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_GetInventoryDataFromActual" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetInventoryDataFromActual_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_GetInventoryMake" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetInventoryModel" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetInventoryOwnedBy" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetInventoryType" ReturnType="Collection(String)" />
+          <FunctionImport Name="sp_Inventory_GetMakes" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetMakes_Result)" />
+          <FunctionImport Name="sp_Inventory_GetModels" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetModels_Result)" />
+          <FunctionImport Name="sp_Inventory_GetRecord" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetRecord_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_GetRecordInventoryDB" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetRecordInventoryDB_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_GetRecords" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetRecords_Result)" />
+          <FunctionImport Name="sp_Inventory_GetRecordTemp" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetRecordTemp_Result)">
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_GetTypes" ReturnType="Collection(TCOBInventoryDBModel.sp_Inventory_GetTypes_Result)" />
+          <FunctionImport Name="sp_Inventory_UpdateInventoryDB">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Letter" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_UpdateInventoryDBActual">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Letter" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Inventory_UpdateRecord">
+            <Parameter Name="inventoryId" Mode="In" Type="Int32" />
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Room" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="Note" Mode="In" Type="String" />
+            <Parameter Name="RoomLetter" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TempInventory_GetRecords" ReturnType="Collection(TCOBInventoryDBModel.sp_TempInventory_GetRecords_Result)" />
+          <FunctionImport Name="sp_TempTable_GetRecords" />
+          <FunctionImport Name="sp_TempTable_GetRecords_Mismatch" ReturnType="Collection(TCOBInventoryDBModel.sp_TempTable_GetRecords_Mismatch_Result)" />
+          <FunctionImport Name="sp_TempTable_GetRecords_New" ReturnType="Collection(TCOBInventoryDBModel.sp_TempTable_GetRecords_New_Result)" />
+          <FunctionImport Name="Update_InventoryDB">
+            <Parameter Name="SerialNumber" Mode="In" Type="String" />
+            <Parameter Name="Make" Mode="In" Type="String" />
+            <Parameter Name="Model" Mode="In" Type="String" />
+            <Parameter Name="ComputerName" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="String" />
+            <Parameter Name="UserPawprint" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Department" Mode="In" Type="String" />
+            <Parameter Name="Location" Mode="In" Type="String" />
+            <Parameter Name="Building" Mode="In" Type="String" />
+            <Parameter Name="OwnedBy" Mode="In" Type="String" />
+            <Parameter Name="PurchaseDate" Mode="In" Type="String" />
+            <Parameter Name="AuxComputerDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Test_Temp">
+            <Parameter Name="TestId" Mode="In" Type="Int32" />
+            <Parameter Name="SerialNum" Mode="In" Type="String" />
+            <Parameter Name="Type" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Get_InventoryData_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Get_Recent_Inventory_Result">
+          <Property Type="Int32" Name="InventoryId" Nullable="false" />
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Room" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="LastVerified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="Get_Record_InventoryDB_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_Record_Temp_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_TestData_Result">
+          <Property Type="Int32" Name="TestId" Nullable="false" />
+          <Property Type="String" Name="SerialNum" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="LastModified" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Get_TestTempData_Result">
+          <Property Type="Int32" Name="DifferenceItemId" Nullable="false" />
+          <Property Type="Int32" Name="TestId" Nullable="true" />
+          <Property Type="String" Name="SerialNum" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Get_Top_Row_Num_Result">
+          <Property Type="Int32" Name="DifferenceItemId" Nullable="false" />
+          <Property Type="Int32" Name="TestId" Nullable="true" />
+          <Property Type="String" Name="SerialNum" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="Inventory_GetInventoryData_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_DeptID_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_Get_Users_Result">
+          <Property Type="String" Name="FullName" Nullable="false" />
+          <Property Type="String" Name="Pawprint" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_MA_Result">
+          <Property Type="String" Name="ComputerInventory_tblModel" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_MakeID_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="CPUType" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_ModelID_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="model" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_Trim_Result">
+          <Property Type="String" Name="model" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_ComputerInventory_TypeID_Result">
+          <Property Type="Int32" Name="ID" Nullable="true" />
+          <Property Type="String" Name="what" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="ErrorNumber" Nullable="true" />
+          <Property Type="Int32" Name="ErrorSeverity" Nullable="true" />
+          <Property Type="Int32" Name="ErrorState" Nullable="true" />
+          <Property Type="String" Name="ErrorProcedure" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ErrorLine" Nullable="true" />
+          <Property Type="String" Name="ErrorMessage" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetCategories_Result">
+          <Property Type="Int32" Name="Category_Id" Nullable="false" />
+          <Property Type="String" Name="Category_Name" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetInventoryData_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetInventoryDataFromActual_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Room" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetMakes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Manuf" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetModels_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetRecord_Result">
+          <Property Type="Int32" Name="InventoryId" Nullable="false" />
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Room" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="LastVerified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetRecordInventoryDB_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Room" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetRecords_Result">
+          <Property Type="Int32" Name="InventoryId" Nullable="false" />
+          <Property Type="String" Name="SerialNumber" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Room" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Letter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="PurchaseDate" Nullable="true" />
+          <Property Type="DateTime" Name="AuxComputerDate" Nullable="true" />
+          <Property Type="DateTime" Name="LastVerified" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetRecordTemp_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="user" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RoomLetter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PurchaseDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AuxComputerDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RecordStatus" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_Inventory_GetTypes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_TempInventory_GetRecords_Result">
+          <Property Type="Int32" Name="DifferenceItemId" Nullable="false" />
+          <Property Type="Int32" Name="TestId" Nullable="true" />
+          <Property Type="String" Name="SerialNum" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_TempTable_GetRecords_Mismatch_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RoomLetter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PurchaseDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AuxComputerDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RecordStatus" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="sp_TempTable_GetRecords_New_Result">
+          <Property Type="String" Name="SerialNumber" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Make" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="ComputerName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="category" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="User" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="UserPawprint" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Department" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RoomLetter" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Building" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="OwnedBy" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="PurchaseDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="AuxComputerDate" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="RecordStatus" Nullable="true" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TCOBInventoryDBModelStoreContainer" CdmEntityContainer="TCOBInventoryDBEntities">
+          <EntitySetMapping Name="ComputerInventory_tblCategory">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblCategory">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblCategory">
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblDepartment">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblDepartment">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblDepartment">
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblMain">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblMain">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblMain">
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Transferred" ColumnName="Transferred" />
+                <ScalarProperty Name="Purchase" ColumnName="Purchase" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="writeConflict" ColumnName="writeConflict" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblMake">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblMake">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblMake">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Manuf" ColumnName="Manuf" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblModel">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblModel">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblModel">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblOwnedBy">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblOwnedBy">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblOwnedBy">
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblParse">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblParse">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblParse">
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ServiceTag" ColumnName="ServiceTag" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="OSSP" ColumnName="OSSP" />
+                <ScalarProperty Name="OSVersion" ColumnName="OSVersion" />
+                <ScalarProperty Name="ProcessorDesc" ColumnName="ProcessorDesc" />
+                <ScalarProperty Name="Processor" ColumnName="Processor" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ClockSpeed" ColumnName="ClockSpeed" />
+                <ScalarProperty Name="PRocessorID" ColumnName="PRocessorID" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="MAC" ColumnName="MAC" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblType">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblType">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblUserStatus">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUserStatus">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblUserStatus">
+                <ScalarProperty Name="USID" ColumnName="USID" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory3">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory3">
+              <MappingFragment StoreEntitySet="ComputerInventory3">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTempInventories">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTempInventory">
+              <MappingFragment StoreEntitySet="tblTempInventory">
+                <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestInventories">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestInventory">
+              <MappingFragment StoreEntitySet="tblTestInventory">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestTemp1Inventory">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestTemp1Inventory">
+              <MappingFragment StoreEntitySet="tblTestTemp1Inventory">
+                <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTestTempInventories">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.tblTestTempInventory">
+              <MappingFragment StoreEntitySet="tblTestTempInventory">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TS_Departments_Serviced">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.TS_Departments_Serviced">
+              <MappingFragment StoreEntitySet="TS_Departments_Serviced">
+                <ScalarProperty Name="Department_ID" ColumnName="Department_ID" />
+                <ScalarProperty Name="Department_Name" ColumnName="Department_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventories">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory">
+              <MappingFragment StoreEntitySet="ComputerInventory">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblLogRecords_TEST">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblLogRecords_TEST">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblLogRecords_TEST">
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Trigger" ColumnName="Trigger" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="NetworkAdapter" ColumnName="NetworkAdapter" />
+                <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblOptions">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblOptions">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblOptions">
+                <ScalarProperty Name="Version" ColumnName="Version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblUser">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUser">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventory_tblUserStorage">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventory_tblUserStorage">
+              <MappingFragment StoreEntitySet="ComputerInventory_tblUserStorage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Pawprint" ColumnName="Pawprint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComputerInventoryTests">
+            <EntityTypeMapping TypeName="TCOBInventoryDBModel.ComputerInventoryTest">
+              <MappingFragment StoreEntitySet="ComputerInventoryTest">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Add_Inventory" FunctionName="TCOBInventoryDBModel.Store.Add_Inventory" />
+          <FunctionImportMapping FunctionImportName="Add_TempTable" FunctionName="TCOBInventoryDBModel.Store.Add_TempTable" />
+          <FunctionImportMapping FunctionImportName="Add_TestTemp" FunctionName="TCOBInventoryDBModel.Store.Add_TestTemp" />
+          <FunctionImportMapping FunctionImportName="Delete_Author" FunctionName="TCOBInventoryDBModel.Store.Delete_Author" />
+          <FunctionImportMapping FunctionImportName="Delete_Inventory_DeleteTempTableData" FunctionName="TCOBInventoryDBModel.Store.Delete_Inventory_DeleteTempTableData" />
+          <FunctionImportMapping FunctionImportName="Delete_Record_Temp" FunctionName="TCOBInventoryDBModel.Store.Delete_Record_Temp" />
+          <FunctionImportMapping FunctionImportName="Delete_TempTableData" FunctionName="TCOBInventoryDBModel.Store.Delete_TempTableData" />
+          <FunctionImportMapping FunctionImportName="Delete_TempTestData" FunctionName="TCOBInventoryDBModel.Store.Delete_TempTestData" />
+          <FunctionImportMapping FunctionImportName="Delete_TestData" FunctionName="TCOBInventoryDBModel.Store.Delete_TestData" />
+          <FunctionImportMapping FunctionImportName="Get_Author_Details" FunctionName="TCOBInventoryDBModel.Store.Get_Author_Details" />
+          <FunctionImportMapping FunctionImportName="Get_Author_Id" FunctionName="TCOBInventoryDBModel.Store.Get_Author_Id" />
+          <FunctionImportMapping FunctionImportName="Get_Category" FunctionName="TCOBInventoryDBModel.Store.Get_Category" />
+          <FunctionImportMapping FunctionImportName="Get_DepartmentNames" FunctionName="TCOBInventoryDBModel.Store.Get_DepartmentNames" />
+          <FunctionImportMapping FunctionImportName="Get_InventoryData" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_InventoryData_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_InventoryMake" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryMake" />
+          <FunctionImportMapping FunctionImportName="Get_InventoryModel" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryModel" />
+          <FunctionImportMapping FunctionImportName="Get_InventoryOwnedBy" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryOwnedBy" />
+          <FunctionImportMapping FunctionImportName="Get_InventoryType" FunctionName="TCOBInventoryDBModel.Store.Get_InventoryType" />
+          <FunctionImportMapping FunctionImportName="Get_New_Author_Id" FunctionName="TCOBInventoryDBModel.Store.Get_New_Author_Id" />
+          <FunctionImportMapping FunctionImportName="Get_Recent_Inventory" FunctionName="TCOBInventoryDBModel.Store.Get_Recent_Inventory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Recent_Inventory_Result">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Record_InventoryDB" FunctionName="TCOBInventoryDBModel.Store.Get_Record_InventoryDB">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Record_InventoryDB_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Record_Temp" FunctionName="TCOBInventoryDBModel.Store.Get_Record_Temp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Record_Temp_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_TestData" FunctionName="TCOBInventoryDBModel.Store.Get_TestData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_TestData_Result">
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_TestTempData" FunctionName="TCOBInventoryDBModel.Store.Get_TestTempData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_TestTempData_Result">
+                <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_Top_Row_Num" FunctionName="TCOBInventoryDBModel.Store.Get_Top_Row_Num">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Get_Top_Row_Num_Result">
+                <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Get_TopRowId" FunctionName="TCOBInventoryDBModel.Store.Get_TopRowId" />
+          <FunctionImportMapping FunctionImportName="Inventory_GetInventoryData" FunctionName="TCOBInventoryDBModel.Store.Inventory_GetInventoryData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.Inventory_GetInventoryData_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Add_New_Data" FunctionName="TCOBInventoryDBModel.Store.sp_Add_New_Data" />
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_AddUser" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_AddUser" />
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Compare" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Compare" />
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_DeptID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_DeptID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_DeptID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Get_Users" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Get_Users">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_Get_Users_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Pawprint" ColumnName="Pawprint" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_MA" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_MA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_MA_Result">
+                <ScalarProperty Name="ComputerInventory_tblModel" ColumnName="ComputerInventory_tblModel" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_MakeID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_MakeID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_MakeID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CPUType" ColumnName="CPUType" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_ModelID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_ModelID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_ModelID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_NewMake" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_NewMake" />
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_NewModel" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_NewModel" />
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_Trim" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_Trim">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_Trim_Result">
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ComputerInventory_TypeID" FunctionName="TCOBInventoryDBModel.Store.sp_ComputerInventory_TypeID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_ComputerInventory_TypeID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="what" ColumnName="what" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorProcedure" ColumnName="ErrorProcedure" />
+                <ScalarProperty Name="ErrorLine" ColumnName="ErrorLine" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Get_Departments" FunctionName="TCOBInventoryDBModel.Store.sp_Get_Departments" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_AddNewTempTable" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddNewTempTable" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_AddRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddRecord" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_AddTempTable" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddTempTable" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_AddUsers" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_AddUsers" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_CreateRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_CreateRecord" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteRecord" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteRecordTemp" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteRecordTemp" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_DeleteTempTableData" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_DeleteTempTableData" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetCategories" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetCategories">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetCategories_Result">
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetCategory" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetCategory" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetDepartmentNames" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetDepartmentNames" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryData" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetInventoryData_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryDataFromActual" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryDataFromActual">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetInventoryDataFromActual_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryMake" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryMake" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryModel" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryModel" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryOwnedBy" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryOwnedBy" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetInventoryType" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetInventoryType" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetMakes" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetMakes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetMakes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Manuf" ColumnName="Manuf" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetModels" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetModels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetModels_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecord">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecord_Result">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecordInventoryDB" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecordInventoryDB">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecordInventoryDB_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecords">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecords_Result">
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Letter" ColumnName="Letter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="LastVerified" ColumnName="LastVerified" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetRecordTemp" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetRecordTemp">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetRecordTemp_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_GetTypes" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_GetTypes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_Inventory_GetTypes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateInventoryDB" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateInventoryDB" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateInventoryDBActual" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateInventoryDBActual" />
+          <FunctionImportMapping FunctionImportName="sp_Inventory_UpdateRecord" FunctionName="TCOBInventoryDBModel.Store.sp_Inventory_UpdateRecord" />
+          <FunctionImportMapping FunctionImportName="sp_TempInventory_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_TempInventory_GetRecords">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempInventory_GetRecords_Result">
+                <ScalarProperty Name="DifferenceItemId" ColumnName="DifferenceItemId" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+                <ScalarProperty Name="SerialNum" ColumnName="SerialNum" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords" />
+          <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords_Mismatch" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords_Mismatch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempTable_GetRecords_Mismatch_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TempTable_GetRecords_New" FunctionName="TCOBInventoryDBModel.Store.sp_TempTable_GetRecords_New">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TCOBInventoryDBModel.sp_TempTable_GetRecords_New_Result">
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="Make" ColumnName="Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ComputerName" ColumnName="ComputerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="UserPawprint" ColumnName="UserPawprint" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="RoomLetter" ColumnName="RoomLetter" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OwnedBy" ColumnName="OwnedBy" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="AuxComputerDate" ColumnName="AuxComputerDate" />
+                <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_InventoryDB" FunctionName="TCOBInventoryDBModel.Store.Update_InventoryDB" />
+          <FunctionImportMapping FunctionImportName="Update_Test_Temp" FunctionName="TCOBInventoryDBModel.Store.Update_Test_Temp" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
